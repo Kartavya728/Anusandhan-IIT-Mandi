@@ -1,0 +1,114 @@
+.header {
+    padding: 10px;
+    background-color: #222;
+  }
+  .nav a {
+    color: white;
+    margin-right: 20px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .carousel {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+  }
+  .list {
+    display: flex;
+    width: max-content;
+    transition: 0.5s;
+  }
+  .item {
+    position: relative;
+    width: 100vw;
+  }
+  .item img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+  }
+  .content {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    color: white;
+  }
+  .author {
+    font-weight: bold;
+  }
+  .title {
+    font-size: 2em;
+  }
+  .topic {
+    margin-top: 10px;
+  }
+  .des {
+    margin-top: 20px;
+    max-width: 400px;
+  }
+  .buttons button {
+    margin: 10px 5px 0 0;
+    padding: 10px 20px;
+    border: none;
+    background: #ff5a5f;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  .thumbnail {
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .thumbnail .item {
+    margin: 0 5px;
+  }
+  .thumbnail img {
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+  }
+  .thumbnail .content {
+    display: none;
+  }
+  .arrows {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+  .arrows button {
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 10px;
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+  }
+  .time {
+    height: 5px;
+    width: 0%;
+    background: #ff5a5f;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: timeRunning 7s linear infinite;
+  }
+  @keyframes timeRunning {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  .next .list,
+  .prev .list {
+    transition: none;
+  }
+  

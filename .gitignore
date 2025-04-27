@@ -1,0 +1,23 @@
+# Node.js dependencies
+node_modules/
+
+# Log files
+*.log
+
+# Operating System files
+.DS_Store   # macOS
+Thumbs.db   # Windows
+
+# Environment files
+.env
+
+# IDE files
+.vscode/
+.idea/
+
+# Python bytecode
+*.pyc
+
+# Build folders
+/dist/
+/build/
