@@ -154,7 +154,22 @@ html {
     --chart-5: 340 75% 55%;
   }
 }
+/* In your global CSS file (e.g., app/globals.css) */
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+/* Class to apply the animation */
+.animate-fadeInSlideUp {
+  animation: fadeInSlideUp 0.5s ease-out forwards;
+}
 
 
 

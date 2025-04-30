@@ -22,7 +22,7 @@ export const HoverEffect = ({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-10",
+        "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-6",
         className
       )}
     >
@@ -51,11 +51,8 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card>
-            <CardImage imageSrc={item.image} />
-            <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.description}</CardDescription>
-          </Card>
+          <Card item={item} />
+
         </a>
       ))}
     </div>
@@ -64,25 +61,40 @@ export const HoverEffect = ({
 
 export const Card = ({
   className,
-  children,
+  item, // Receive the whole item object
 }: {
   className?: string;
-  children: React.ReactNode;
+  item: {
+    image: string;
+    title: string;
+    description: string;
+    link: string; // link isn't used here but good practice to type it if passed
+  };
 }) => {
   return (
+    // Apply overall card styling here
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-white border border-transparent dark:border-black/[0.2] group-hover:border-purple-600 relative z-20",
+        // Base styles similar to the reference, keeping original rounded corners
+        "rounded-2xl h-full w-full overflow-hidden bg-white dark:bg-zinc-900 border border-gray-300 dark:border-black/[0.2] relative z-20",
+        // Keep the group-hover effect for the border
+        "group-hover:border-purple-600 shadow-md dark:shadow-xl", // Added shadow
         className
       )}
     >
-      <div className="relative z-50">
-        <div className="p-4">{children}</div>
+      {/* Image Component takes the top part */}
+      <CardImage imageSrc={item.image} altText={item.title} />
+
+      {/* Content Section below the image */}
+      <div className="p-4"> {/* Padding applied only to the content area */}
+        <CardTitle>{item.title}</CardTitle>
+        <CardDescription>{item.description}</CardDescription>
       </div>
     </div>
   );
 };
 
+// Updated CardTitle
 export const CardTitle = ({
   className,
   children,
@@ -91,12 +103,18 @@ export const CardTitle = ({
   children: React.ReactNode;
 }) => {
   return (
-    <h4 className={cn("text-black font-bold tracking-wide mt-4 text-center", className)}>
+    // Styles closer to reference: larger text, not centered, less margin
+    <h4 className={cn(
+        "text-zinc-800 dark:text-zinc-100 font-bold tracking-wide text-xl", // Adjusted size and color
+        className
+      )}
+    >
       {children}
     </h4>
   );
 };
 
+// Updated CardDescription
 export const CardDescription = ({
   className,
   children,
@@ -107,7 +125,8 @@ export const CardDescription = ({
   return (
     <p
       className={cn(
-        "mt-8 text-black tracking-wide leading-relaxed text-sm",
+        // Styles closer to reference: smaller top margin, standard text color
+        "mt-2 text-zinc-600 dark:text-zinc-400 tracking-wide leading-relaxed text-sm", // Reduced margin-top, adjusted color
         className
       )}
     >
@@ -116,18 +135,19 @@ export const CardDescription = ({
   );
 };
 
-export const CardImage = ({ imageSrc }: { imageSrc: string }) => {
+// Updated CardImage to use fill and cover
+export const CardImage = ({ imageSrc, altText }: { imageSrc: string, altText: string }) => {
   return (
-    <div className="flex justify-center items-center mb-4">
-      <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-purple-600">
-        <Image
-          src={imageSrc}
-          alt="Card Image"
-          width={96} // width of the circular image
-          height={96} // height of the circular image
-          className="object-cover"
-        />
-      </div>
+    // Container with fixed height for the image
+    <div className="w-full h-48 relative overflow-hidden"> {/* Adjust h-48 if needed */}
+      <Image
+        src={imageSrc}
+        alt={altText} // Use item title for better alt text
+        fill // Use fill to cover the container
+        className="object-cover" // Ensure the image covers the area, cropping if necessary
+        // Optional: Add sizes for optimization
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
     </div>
   );
 };

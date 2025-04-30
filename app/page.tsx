@@ -1,14 +1,16 @@
 import Carousel from "@/components/main/Carousel";
 import Hero from "@/components/main/Hero";
 import Projects from "@/components/main/Projects";
+
 import Spon from "@/components/main/Spon";
+import Registrations from "@/components/sub/RCard";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 
 export default function Home() {
   return (
-    <main className="h-full w-full">
-      <div className="flex flex-col gap-20">
-        <br/>
+    <main className="h-full w-full"> <br/> <br/>
+      <div className="flex flex-col items-center">
+        <br/> <br/>
       <Carousel/>
         <Hero />
         <Projects />
@@ -21,6 +23,10 @@ export default function Home() {
 </div>
 
       </div>
+      <div className="relative z-10">
+  <Registrations />
+</div>
+
       
       <Spon/>
 
