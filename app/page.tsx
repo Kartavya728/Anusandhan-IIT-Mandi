@@ -1,7 +1,8 @@
-import Carousel from "@/components/main/Carousel";
-import Hero from "@/components/main/Hero";
-import Projects from "@/components/main/Projects";
 
+import Carousel from "@/components/main/Carousel";
+import Events from "@/components/main/Events";
+import Hero from "@/components/main/Hero";
+import RegistrationCards from "@/components/main/Registrations";
 import Spon from "@/components/main/Spon";
 import Registrations from "@/components/sub/RCard";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
@@ -13,24 +14,21 @@ export default function Home() {
         <br/> <br/>
       <Carousel/>
         <Hero />
-        <Projects />
+        <Events/>
         
         <div className="max-w-5xl mx-auto px-8" id="speaker">
-  <h1 className="text-[40px] font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500 py-20 text-center">
-    Speakers
+  <h1 className="text-[40px] font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-600   to-blue-400 pt-10 text-center">Speakers
   </h1>
   <HoverEffect items={projects} />
 </div>
-
       </div>
-      <div className="relative z-10">
-  <Registrations />
-</div>
+      <div className="max-w-5xl mx-auto px-8 text-black" id="registration">
+        <h1 className="text-[40px] font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-600   to-blue-400 pt-10 text-center">Registration</h1>
+      At least one author of each accepted abstract/full-length paper must register for the submitted work to be presented in the proceedings. Registration fees include hostel accommodation (17th-19th June), food (breakfast, lunch, snacks, conference refreshments and dinner) during conference days (18-19th June), conference gala-dinner, and registration kit:
+      <RegistrationCards/>
+      </div>
 
-      
       <Spon/>
-
-      
     </main>
   );
 }

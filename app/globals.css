@@ -21,6 +21,7 @@
     black 90%, /* Adjust percentage for fade width */
     transparent 100%
   );
+  
 }
 
 /* Optional: If group-hover:animate-pause doesn't work reliably */

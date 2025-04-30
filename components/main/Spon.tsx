@@ -22,8 +22,11 @@ function Spon() {
   return (
     <div className="w-full py-8 md:py-12" id="contact"> {/* Optional background */}
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-violet-400">Our Sponsors</h2>
-        <p className="text-gray-600 mt-2">Powering innovation together.</p>
+        <h1 className='text-[40px] font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-200  text-center'>
+        Our Sponsors
+        </h1>
+        
+        <p className="text-gray-600 ">Powering innovation together.</p>
       </div>
 
       {/* Reel 1 (Scroll Left) */}
@@ -43,9 +46,9 @@ function Spon() {
               <Image
                 src={sponsor.src}
                 alt={sponsor.alt}
-                height={60} // Adjust height as needed (e.g., 60px)
-                width={150} // Adjust width or keep it flexible based on height
-                className="object-contain h-12 md:h-16 w-auto" // control display size
+                height={100} // Adjust height as needed (e.g., 60px)
+                width={250} // Adjust width or keep it flexible based on height
+                className="object-contain h-16 md:h-24 w-auto" // control display size
               />
             </div>
           ))}
@@ -65,9 +68,9 @@ function Spon() {
                <Image
                 src={sponsor.src}
                 alt={sponsor.alt}
-                height={60} // Keep consistent or vary if desired
-                width={150}
-                className="object-contain h-12 md:h-16 w-auto"
+                height={100} // Keep consistent or vary if desired
+                width={250}
+                className="object-contain h-16 md:h-24 w-auto"
               />
             </div>
           ))}

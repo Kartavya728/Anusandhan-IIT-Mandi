@@ -1,7 +1,3 @@
-// src/components/Carousel.tsx
-
-// Add 'use client' at the top is crucial for using hooks like useEffect, useRef
-// and interacting with the browser DOM/APIs.
 'use client';
 
 import React, { useEffect, useRef } from 'react';

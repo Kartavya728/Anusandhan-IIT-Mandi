@@ -19,7 +19,7 @@ const Aboutiit = () => {
         initial="hidden"
         whileInView="visible"
         // --- CHANGE: Animation triggers when 60% is in view ---
-        viewport={{ amount: 0.6, once: false }} // once: false makes it re-animate on scroll if needed, remove if you want it only once
+        viewport={{ amount: 0.3, once: false }} // once: false makes it re-animate on scroll if needed, remove if you want it only once
         // Inner container: Max width, centered, rounded corners, content padding, flex layout
         // --- CHANGE: Adjusted padding for different screen sizes ---
         className="flex flex-col md:flex-row items-center justify-center w-full z-[20] max-w-screen-xl mx-auto rounded-xl bg-black px-6 sm:px-10 md:px-16 lg:px-24 py-8 md:py-12 shadow-lg shadow-gray-900" // Increased padding progressively
