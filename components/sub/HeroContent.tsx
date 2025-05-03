@@ -16,7 +16,7 @@ const HeroContent = () => {
       initial="hidden"
       whileInView="visible"
       // --- CHANGE: Animation triggers when 60% is in view ---
-      viewport={{ amount: 0.6, once: false }} // Matched Aboutiit's trigger point and re-animation behavior
+      viewport={{ amount: 0.1, once: false }} // Matched Aboutiit's trigger point and re-animation behavior
       // --- CHANGE: Applied same padding structure as Aboutiit's inner container ---
       // Max-width, centering, responsive horizontal & vertical padding
       className="flex flex-col md:flex-row items-center justify-center w-full z-[20] max-w-screen-xl mx-auto px-6 sm:px-10 md:px-16 lg:px-24 py-8 md:py-12" // Adopted padding values

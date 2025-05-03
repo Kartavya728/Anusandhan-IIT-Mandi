@@ -67,7 +67,7 @@ const StarsCanvas = () => {
   }
 
   return (
-    <div className="w-full h-auto fixed inset-0 z-[20]">
+    <div className="w-full h-auto fixed inset-0 z-10 pointer-events-none">
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Suspense fallback={<div>Loading...</div>}>
           <StarBackground />
@@ -75,6 +75,6 @@ const StarsCanvas = () => {
       </Canvas>
     </div>
   );
-};
+};  
 
 export default StarsCanvas;

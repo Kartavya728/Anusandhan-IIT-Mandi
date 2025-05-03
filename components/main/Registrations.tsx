@@ -70,7 +70,7 @@ export function RegistrationCards() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative bg-white rounded-2xl border-2 shadow-lg overflow-hidden p-6 flex flex-col sm:flex-row justify-between items-center"
+              className="relative bg-white rounded-2xl border-2 z-40 shadow-lg overflow-hidden p-6 flex flex-col sm:flex-row justify-between items-center"
               style={{
                 borderImage: "linear-gradient(to right, #7C3AED, #60A5FA) 1",
               }}
@@ -86,7 +86,7 @@ export function RegistrationCards() {
                 href={item.registrationLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 sm:mt-0 sm:ml-6 px-6 py-2 text-sm font-semibold text-white rounded-full bg-gradient-to-r from-purple-600 to-blue-400 hover:from-purple-700 hover:to-blue-500 transition-all shadow"
+                className="mt-4 sm:mt-0 sm:ml-6 px-6 py-2 z-50 text-sm font-semibold text-white rounded-full bg-gradient-to-r from-purple-600 to-blue-400 hover:from-purple-700 hover:to-blue-500 transition-all shadow"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

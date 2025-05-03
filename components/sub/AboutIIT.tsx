@@ -13,16 +13,16 @@ const Aboutiit = () => {
   return (
     // Outer div for full-width background and vertical margin/padding
     // Removed horizontal padding here, letting the inner container handle it
-    <div className="w-full bg-black py-4 sm:py-8 rounded-b-3xl">
+    <div className="w-full bg-slate-900 py-4 sm:py-8 rounded-b-3xl">
 
       <motion.div
         initial="hidden"
         whileInView="visible"
         // --- CHANGE: Animation triggers when 60% is in view ---
-        viewport={{ amount: 0.3, once: false }} // once: false makes it re-animate on scroll if needed, remove if you want it only once
+        viewport={{ amount: 0.1, once: false }} // once: false makes it re-animate on scroll if needed, remove if you want it only once
         // Inner container: Max width, centered, rounded corners, content padding, flex layout
         // --- CHANGE: Adjusted padding for different screen sizes ---
-        className="flex flex-col md:flex-row items-center justify-center w-full z-[20] max-w-screen-xl mx-auto rounded-xl bg-black px-6 sm:px-10 md:px-16 lg:px-24 py-8 md:py-12 shadow-lg shadow-gray-900" // Increased padding progressively
+        className="flex flex-col md:flex-row items-center justify-center w-full z-[20] max-w-screen-xl mx-auto rounded-xl bg-slate-900 px-6 sm:px-10 md:px-16 lg:px-24 py-8 md:py-12 shadow-lg shadow-gray-900" // Increased padding progressively
       >
         {/* Image on the Left */}
         <motion.div
