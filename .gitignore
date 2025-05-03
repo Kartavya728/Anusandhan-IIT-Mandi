@@ -17,7 +17,7 @@ Thumbs.db   # Windows
 
 # Python bytecode
 *.pyc
-
+.next/
 # Build folders
 /dist/
 /build/
