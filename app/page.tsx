@@ -6,9 +6,12 @@ import RegistrationCards from "@/components/main/Registrations";
 import Spon from "@/components/main/Spon";
 import Registrations from "@/components/sub/RCard";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
-
+import Maps from "@/components/main/Maps";
+import EventDatesTable from "@/components/main/Tables";
+import Themes from "@/components/main/Themes";
 export default function Home() {
   return (
+    <>
     <main className="h-full w-full"> <br/> <br/>
       <div className="flex flex-col items-center">
         <br/> <br/>
@@ -29,7 +32,19 @@ export default function Home() {
       </div>
 
       <Spon/>
+
+
+      <EventDatesTable/>
+      <Maps/>
+
+      <Themes/>
     </main>
+    
+
+
+    </>
+
+
   );
 }
 const projects = [
