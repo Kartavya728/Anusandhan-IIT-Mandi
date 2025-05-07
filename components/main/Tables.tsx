@@ -64,7 +64,7 @@ const EventDatesTable = (): JSX.Element => {
   return (
     <div
       // MODIFIED: min-h-screen, responsive padding for the whole section
-      className="min-h-screen w-full font-sans px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-x-hidden"
+      className="min-h-screen z-10 w-full font-sans px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-x-hidden"
       style={{ backgroundColor: '#e9e5ff' }}
     >
       <motion.div

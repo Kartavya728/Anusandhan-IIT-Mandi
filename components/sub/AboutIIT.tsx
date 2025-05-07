@@ -11,14 +11,20 @@ import Image from "next/image";
 
 const Aboutiit = () => {
   return (
-    // REVISED: Increased horizontal padding for more empty space on left/right of the component
+    // REVISED: Significantly increased horizontal padding for more empty space.
     // Original: px-4 sm:px-6 lg:px-8
-    // New:      px-8 sm:px-12 lg:px-16 (doubled the padding values)
-    <div className="w-full bg-slate-900 py-12 sm:py-16 md:py-20 lg:py-24 rounded-b-3xl px-8 sm:px-12 lg:px-16">
+    // Previous Attempt: px-8 sm:px-12 lg:px-16
+    // New Drastic Attempt: px-8 sm:px-16 lg:px-24 (or even more if needed for testing)
+    // This means:
+    // - Default: 32px padding on each side (was 16px)
+    // - Small screens (sm): 64px padding on each side (was 24px)
+    // - Large screens (lg): 96px padding on each side (was 32px)
+    <div className="w-full bg-slate-900 py-12 sm:py-16 md:py-20 lg:py-24 rounded-b-3xl px-8 sm:px-16 lg:px-24">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ amount: 0.1, once: false }}
+        // This inner div remains max-w-screen-xl and mx-auto, so it will center within the new, more padded space.
         className="flex flex-col md:flex-row items-center justify-center w-full z-[20] max-w-screen-xl mx-auto rounded-xl bg-slate-900 px-6 sm:px-10 md:px-16 lg:px-24 py-8 md:py-12 shadow-lg shadow-gray-900"
       >
         {/* Image on the Left */}

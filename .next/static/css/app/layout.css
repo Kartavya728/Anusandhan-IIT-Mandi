@@ -2052,6 +2052,10 @@ html {
     padding-left: 3rem;
     padding-right: 3rem;
   }
+  .sm\:px-16{
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
   .sm\:text-left{
     text-align: left;
   }

@@ -28,37 +28,37 @@ const GradientText: React.FC<GradientTextProps> = ({ children, className }) => (
 // (especially 'image' vs 'imageSrc')
 const projects: ProjectItem[] = [
   {
-    image: "/Images/c3.jpg", // Ensure ProjectItem expects 'image'
+    image: "/Images/p1.jpeg", // Ensure ProjectItem expects 'image'
     title: "Jobidon kahn",
     description: "A technology company that builds eco.",
     link: "/",
   },
   {
-    image: "/Images/c7.jpg",
+    image: "/Images/p2.jpeg",
     title: "Jeff Bezos",
     description: "A streaming service that offers a wide variety of movies and shows.",
     link: "/",
   },
   {
-    image: "/Images/c6.jpg",
+    image: "/Images/p3.jpeg",
     title: "Veer Savarkar", // Corrected name
     description: "A multinational technology company.",
     link: "/",
   },
   {
-    image: "/Images/c1.jpg",
+    image: "/Images/p4.jpeg",
     title: "Jethalal Gada", // Corrected name
     description: "A technology company that focuses on social media and virtual reality.",
     link: "/",
   },
   {
-    image: "/Images/c2.jpg",
+    image: "/Images/p5.jpeg",
     title: "Kartavya Singh", // Corrected name
     description: "A multinational technology company focusing on e-commerce and AI.",
     link: "/",
   },
   {
-    image: "/Images/c4.jpg",
+    image: "/Images/p6.jpeg",
     title: "Dr. Bhera",
     description: "A multinational technology company offering software and related services.",
     link: "/",
