@@ -1,7 +1,7 @@
 "use client"
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "motion/react";
-import Image from "next/image"; // Import the Image component from Next.js
+import { AnimatePresence, motion } from "motion/react"; // Assuming this path is correct for your framer-motion setup
+import Image from "next/image";
 import { useState } from "react";
 
 export interface ProjectItem {
@@ -11,18 +11,11 @@ export interface ProjectItem {
   link: string;
 }
 
-
 export const HoverEffect = ({
   items,
   className,
 }: {
-  items: {
-    image: string;
-    title: string;
-    description: string;
-    link: string;
-     // Add image URL to each item
-  }[];
+  items: ProjectItem[]; // Use the interface here
   className?: string;
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -30,7 +23,11 @@ export const HoverEffect = ({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-6",
+        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
+        // --- MODIFIED/ADDED FOR BETTER SPACING ---
+        "px-4 sm:px-6 lg:px-8", // Horizontal padding for different screen sizes
+        "py-8 sm:py-10 md:py-12 lg:py-16", // Responsive vertical padding for the section
+        // --- END MODIFICATIONS ---
         className
       )}
     >
@@ -38,7 +35,7 @@ export const HoverEffect = ({
         <a
           href={item?.link}
           key={item?.link}
-          className="relative group  block p-2 h-full w-full"
+          className="relative group block p-2 h-full w-full" // p-2 here creates the visual gap between cards
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -60,7 +57,6 @@ export const HoverEffect = ({
             )}
           </AnimatePresence>
           <Card item={item} />
-
         </a>
       ))}
     </div>
@@ -69,32 +65,21 @@ export const HoverEffect = ({
 
 export const Card = ({
   className,
-  item, // Receive the whole item object
+  item,
 }: {
   className?: string;
-  item: {
-    image: string;
-    title: string;
-    description: string;
-    link: string; // link isn't used here but good practice to type it if passed
-  };
+  item: ProjectItem; // Use the interface
 }) => {
   return (
-    // Apply overall card styling here
     <div
       className={cn(
-        // Base styles similar to the reference, keeping original rounded corners
         "rounded-2xl h-full w-full overflow-hidden bg-white dark:bg-zinc-900 border border-gray-300 dark:border-black/[0.2] relative z-20",
-        // Keep the group-hover effect for the border
-        "group-hover:border-purple-600 shadow-md dark:shadow-xl", // Added shadow
+        "group-hover:border-purple-600 shadow-md dark:shadow-xl",
         className
       )}
     >
-      {/* Image Component takes the top part */}
       <CardImage imageSrc={item.image} altText={item.title} />
-
-      {/* Content Section below the image */}
-      <div className="p-4"> {/* Padding applied only to the content area */}
+      <div className="p-4"> {/* Content padding */}
         <CardTitle>{item.title}</CardTitle>
         <CardDescription>{item.description}</CardDescription>
       </div>
@@ -102,7 +87,6 @@ export const Card = ({
   );
 };
 
-// Updated CardTitle
 export const CardTitle = ({
   className,
   children,
@@ -111,9 +95,8 @@ export const CardTitle = ({
   children: React.ReactNode;
 }) => {
   return (
-    // Styles closer to reference: larger text, not centered, less margin
     <h4 className={cn(
-        "text-zinc-800 dark:text-zinc-100 font-bold tracking-wide text-xl", // Adjusted size and color
+        "text-zinc-800 dark:text-zinc-100 font-bold tracking-wide text-xl",
         className
       )}
     >
@@ -122,7 +105,6 @@ export const CardTitle = ({
   );
 };
 
-// Updated CardDescription
 export const CardDescription = ({
   className,
   children,
@@ -133,8 +115,7 @@ export const CardDescription = ({
   return (
     <p
       className={cn(
-        // Styles closer to reference: smaller top margin, standard text color
-        "mt-2 text-zinc-600 dark:text-zinc-400 tracking-wide leading-relaxed text-sm", // Reduced margin-top, adjusted color
+        "mt-2 text-zinc-600 dark:text-zinc-400 tracking-wide leading-relaxed text-sm",
         className
       )}
     >
@@ -143,17 +124,14 @@ export const CardDescription = ({
   );
 };
 
-// Updated CardImage to use fill and cover
 export const CardImage = ({ imageSrc, altText }: { imageSrc: string, altText: string }) => {
   return (
-    // Container with fixed height for the image
-    <div className="w-full h-48 relative overflow-hidden"> {/* Adjust h-48 if needed */}
+    <div className="w-full h-48 relative overflow-hidden"> {/* Consistent image height */}
       <Image
         src={imageSrc}
-        alt={altText} // Use item title for better alt text
-        fill // Use fill to cover the container
-        className="object-cover" // Ensure the image covers the area, cropping if necessary
-        // Optional: Add sizes for optimization
+        alt={altText}
+        fill
+        className="object-cover"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
     </div>

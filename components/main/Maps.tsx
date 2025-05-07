@@ -173,10 +173,11 @@ export default function LeafletMapIITMandi(): JSX.Element {
           className="w-full max-w-3xl mx-auto"
           variants={mapContainerVariants}
         >
-          <div
-            ref={mapRef}
-            className="w-full h-96 rounded-xl border-2 border-cyan-500 shadow-2xl overflow-hidden"
-          />
+<div
+  ref={mapRef}
+  className="w-full h-96  max-w-16xl mx-auto rounded-2xl border-4 border-cyan-400 shadow-2xl overflow-hidden"
+/>
+
         </motion.div>
 
         <motion.div className="mt-8 text-center" variants={textBlockVariants}>

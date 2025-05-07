@@ -1,17 +1,17 @@
 "use client";
-import React, { useRef, ReactNode } from "react"; // Added ReactNode
+import React, { useRef, ReactNode } from "react";
 import { BsCalendarEvent } from "react-icons/bs";
-import { motion, useScroll, useTransform, Variants as FramerVariants, MotionValue } from "framer-motion"; // Added types
+import { motion, useScroll, useTransform, Variants as FramerVariants, MotionValue } from "framer-motion";
 
-// Interface for event date items
+// Interface for event date items (YOUR ORIGINAL)
 interface EventDateItem {
   id: number;
   event: string;
   date: string;
-  previousDate: string | null; // Can be string or null
+  previousDate: string | null;
 }
 
-// Event dates data with type
+// Event dates data with type (YOUR ORIGINAL)
 const eventDates: EventDateItem[] = [
   { id: 1, event: "Last Date of Abstract/ Full-Length Paper Submission", date: "08th June 2024", previousDate: null },
   { id: 2, event: "Last Date of Registration", date: "10th June 2024", previousDate: null },
@@ -19,7 +19,7 @@ const eventDates: EventDateItem[] = [
   { id: 4, event: "Date of Events", date: "18th - 19th June 2024", previousDate: null },
 ];
 
-// Gradient Text Component (reusable)
+// Gradient Text Component (reusable - YOUR ORIGINAL)
 interface GradientTextProps {
   children: ReactNode;
   className?: string;
@@ -30,10 +30,10 @@ const GradientText: React.FC<GradientTextProps> = ({ children, className }) => (
   </span>
 );
 
-// Animation Variants - Explicitly typed
+// Animation Variants - Explicitly typed (YOUR ORIGINAL)
 const contentBoxVariants: FramerVariants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.3 } }, // Adjusted delay
+  visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
 };
 
 const titleVariants: FramerVariants = {
@@ -47,74 +47,74 @@ const tableVariants: FramerVariants = {
 };
 
 const ctaVariants: FramerVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.9 }, // Adjusted initial state
+  hidden: { opacity: 0, y: 20, scale: 0.9 },
   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "backOut" } },
 };
 
 const EventDatesTable = (): JSX.Element => {
-  const boxRef = useRef<HTMLDivElement | null>(null); // Typed ref
+  const boxRef = useRef<HTMLDivElement | null>(null);
 
-  const { scrollYProgress }: { scrollYProgress: MotionValue<number> } = useScroll({ // Typed scrollYProgress
+  const { scrollYProgress }: { scrollYProgress: MotionValue<number> } = useScroll({
     target: boxRef,
     offset: ["start end", "center center"],
   });
 
   const boxScale: MotionValue<number> = useTransform(scrollYProgress, [0, 1], [1.75, 1]);
-  // Optional: Opacity for the box if you want a very quick fade-in
-  // const boxOpacity: MotionValue<number> = useTransform(scrollYProgress, [0, 0.15], [0, 1]);
-
 
   return (
-    // Page background. Using min-h-screen, padding, and flex to center the box.
     <div
-      className="h-screen w-full font-sans py-16 md:py-24 overflow-x-hidden flex items-center justify-center"
-      style={{ backgroundColor: '#e9e5ff' }} // Corrected background color application
+      // MODIFIED: min-h-screen, responsive padding for the whole section
+      className="min-h-screen w-full font-sans px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-x-hidden"
+      style={{ backgroundColor: '#e9e5ff' }}
     >
       <motion.div
         ref={boxRef}
-        className="max-w-4xl w-full mx-auto bg-slate-900 rounded-3xl shadow-2xl" // Added w-full for responsiveness
+        className="max-w-4xl w-full mx-auto bg-slate-900 rounded-3xl shadow-2xl"
         style={{
           scale: boxScale,
-          // opacity: boxOpacity, // Uncomment if using boxOpacity
           transformOrigin: "center center",
         }}
       >
-        {/* Inner container for content, manages padding and content animations */}
         <motion.div
-          className="p-6 md:p-10 lg:p-12"
+          // MODIFIED: Responsive padding for inner content
+          className="p-6 sm:p-8 md:p-10 lg:p-12"
           variants={contentBoxVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }} // Trigger when a bit of the box is visible
+          viewport={{ once: false, amount: 0.1 }}
         >
-          <motion.div className="text-center mb-12" variants={titleVariants}>
-            <h2 className="text-3xl font-bold sm:text-4xl mb-3">
+          {/* MODIFIED: Responsive bottom margin for title section */}
+          <motion.div className="text-center mb-8 sm:mb-10 md:mb-12" variants={titleVariants}>
+            {/* MODIFIED: Responsive text size and bottom margin for h2 */}
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3">
               <GradientText>Important Event Dates</GradientText>
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto"></div>
           </motion.div>
 
           <motion.div className="relative" variants={tableVariants}>
-            {/* Decorative corner accents - styled for dark theme */}
             <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-cyan-600 opacity-40 rounded-tl-lg"></div>
             <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-cyan-600 opacity-40 rounded-tr-lg"></div>
             <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-cyan-600 opacity-40 rounded-bl-lg"></div>
             <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-cyan-600 opacity-40 rounded-br-lg"></div>
 
-            <div className="bg-slate-800 shadow-xl rounded-lg overflow-hidden border border-slate-700 m-2 md:m-4">
-              <div className="flex items-center justify-center bg-gradient-to-r from-purple-600 to-cyan-600 py-4 px-6">
-                <BsCalendarEvent className="text-white mr-3 text-2xl" />
-                <h3 className="text-lg font-semibold text-white">Important Dates</h3>
+            {/* MODIFIED: Responsive margin for the table container */}
+            <div className="bg-slate-800 shadow-xl rounded-lg overflow-hidden border border-slate-700 m-2 sm:m-3 md:m-4">
+              {/* MODIFIED: Responsive padding, icon size, and title text size */}
+              <div className="flex items-center justify-center bg-gradient-to-r from-purple-600 to-cyan-600 py-3 px-4 sm:py-4 sm:px-6">
+                <BsCalendarEvent className="text-white mr-2 sm:mr-3 text-xl sm:text-2xl" />
+                <h3 className="text-base sm:text-lg font-semibold text-white">Important Dates</h3>
               </div>
 
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-slate-700">
                   <thead className="bg-slate-700/50">
                     <tr>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">
+                      {/* MODIFIED: Responsive padding for table header cells */}
+                      <th scope="col" className="px-4 py-3 sm:px-6 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">
                         Event
                       </th>
-                      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">
+                      <th scope="col" className="px-4 py-3 sm:px-6 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">
                         Date
                       </th>
                     </tr>
@@ -123,12 +123,13 @@ const EventDatesTable = (): JSX.Element => {
                     {eventDates.map((item, index) => (
                       <tr
                         key={item.id}
-                        className={index % 2 === 0 ? "bg-slate-800 hover:bg-slate-700/70" : "bg-slate-800/60 hover:bg-slate-700/70"} // Subtle hover
+                        className={index % 2 === 0 ? "bg-slate-800 hover:bg-slate-700/70" : "bg-slate-800/60 hover:bg-slate-700/70"}
                       >
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-100">
+                        {/* MODIFIED: Responsive padding for table data cells */}
+                        <td className="px-4 py-4 sm:px-6 whitespace-nowrap text-sm font-medium text-slate-100">
                           {item.event}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-300">
+                        <td className="px-4 py-4 sm:px-6 whitespace-nowrap text-sm text-slate-300">
                           <div className="flex flex-col">
                             <span className="font-medium text-slate-100">{item.date}</span>
                             {item.previousDate && (
@@ -146,13 +147,16 @@ const EventDatesTable = (): JSX.Element => {
             </div>
           </motion.div>
 
-          <motion.div className="mt-10 text-center" variants={ctaVariants}>
-            <p className="text-slate-400 mb-4">
+          {/* MODIFIED: Responsive top margin for CTA section */}
+          <motion.div className="mt-8 sm:mt-10 md:mt-12 text-center" variants={ctaVariants}>
+            {/* MODIFIED: Responsive text size and bottom margin for paragraph */}
+            <p className="text-sm sm:text-base text-slate-400 mb-4 sm:mb-6">
               Please ensure to adhere to these important dates for a smooth participation process.
             </p>
+            {/* MODIFIED: Responsive padding and text size for button */}
             <a
               href="#registration"
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-cyan-500 shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-105"
+              className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-cyan-500 shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-105"
             >
               Register Now
             </a>
