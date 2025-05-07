@@ -1,8 +1,28 @@
 "use client";
 import React from "react";
 import { StickyScroll, ContentItem } from "../ui/sticky-scroll-reveal"; // Adjust path
+import { motion, Variants } from "framer-motion"; // Import Variants type
+
+// Gradient Text Component
+interface GradientTextProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+const GradientText: React.FC<GradientTextProps> = ({ children, className }) => (
+  <span className={`text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500 ${className || ''}`}>
+    {children}
+  </span>
+);
+
+// Animation variant for the title
+const titleVariants: Variants = { // Explicitly type with Variants
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
 // Make sure these images exist in public/Images/
+// The ContentItem type comes from your sticky-scroll-reveal component
 const content: ContentItem[] = [
   {
     title: "Paper Presentation",
@@ -30,13 +50,31 @@ const content: ContentItem[] = [
   },
 ];
 
-export function Events() {
+export function Events(): JSX.Element {
   return (
-    <section className="w-full bg-slate-900 py-12 md:py-20" id="events">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-10 md:mb-16">
-        Event Highlights
-      </h2>
-      <StickyScroll content={content} />
+    // Adjusted height: Use min-height if you want it to be at least a certain portion of the viewport,
+    // or rely on padding and content. Removed h-1/2.
+    // `min-h-[80vh]` or `min-h-screen` could be options if you want it to fill more vertical space.
+    // For now, letting padding and StickyScroll's height dictate.
+    <section className="w-full bg-slate-900 py-16 md:py-24 relative" id="events">
+      <motion.h2
+        className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-20" // Increased bottom margin
+        variants={titleVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+      >
+        <GradientText>Event Highlights</GradientText>
+      </motion.h2>
+
+      {/*
+        The actual scrolling height and behavior (image pinning, text alignment)
+        are primarily controlled by the <StickyScroll /> component's internal implementation.
+        This wrapper div mainly constrains its width and provides horizontal padding.
+      */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <StickyScroll content={content} />
+      </div>
     </section>
   );
 }
