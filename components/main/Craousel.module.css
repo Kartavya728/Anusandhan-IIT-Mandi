@@ -1,23 +1,54 @@
+/* Define theme colors as CSS Custom Properties */
+:root {
+  --gradient-purple: #8B5CF6; /* Tailwind purple-500 */
+  --gradient-cyan: #06B6D4;   /* Tailwind cyan-500 */
+  --gradient-direction: to right;
+}
+
+/* Helper class for gradient text (optional, but shows the principle) */
+/* We will apply directly to elements for this request */
+/*
+.gradient-text {
+  background-image: linear-gradient(var(--gradient-direction), var(--gradient-purple), var(--gradient-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gradient-text-fallback {
+  color: var(--gradient-purple);
+}
+*/
+
 .header {
   padding: 10px;
-  padding-bottom: 0; /* Use 0 instead of 0cm for consistency */
+  padding-bottom: 0;
   background-color: #222;
-  /* margin-bottom: 0; /* Optional: Add if you want no space below header */
 }
 
 .nav a {
-  color: white;
+  /* Original styles */
   margin-right: 20px;
   text-decoration: none;
   font-weight: bold;
+
+  /* Apply gradient theme */
+  color: var(--gradient-purple); /* Fallback for older browsers */
 }
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .nav a {
+    background-image: linear-gradient(var(--gradient-direction), var(--gradient-purple), var(--gradient-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
 
 .carousel {
   position: relative;
   width: 100%;
   height: 600px;
   overflow: hidden;
-  /* Explicitly ensure no bottom margin or padding */
   margin-bottom: 0;
   padding-bottom: 0;
 }
@@ -31,63 +62,115 @@
 .item {
   position: relative;
   width: 100vw;
-  /* Ensure item itself doesn't cause extra space if container height is auto */
-  /* Not strictly needed here due to fixed carousel height and overflow:hidden */
-  /* vertical-align: top; */ /* Might help if items are inline-block */
 }
 
 .item img {
   width: 100%;
   height: 600px;
   object-fit: cover;
-  /* Images are often inline by default, which can add tiny space below */
-  display: block; /* Ensures image behaves as a block element */
+  display: block;
 }
 
 .content {
   position: absolute;
   bottom: 50px;
   left: 50px;
-  color: white;
-  /* Ensure no bottom margin on the content block itself */
+  color: white; /* Default color for text not specifically themed */
   margin-bottom: 0;
 }
 
+/* Apply gradient to specific text elements within .content */
+.content .author,
+.content .title,
+.content .topic {
+  color: var(--gradient-purple); /* Fallback */
+}
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .content .author,
+  .content .title,
+  .content .topic {
+    background-image: linear-gradient(var(--gradient-direction), var(--gradient-purple), var(--gradient-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+/* Consider if .des should also be gradient. For long text, it might be too much. */
+/* If you want .des to also have gradient text: */
+/*
+.content .des {
+  color: var(--gradient-purple); // Fallback
+}
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .content .des {
+    background-image: linear-gradient(var(--gradient-direction), var(--gradient-purple), var(--gradient-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+*/
+
 .author {
   font-weight: bold;
-  margin-bottom: 0; /* Defend against potential browser default paragraph margins */
+  margin-bottom: 0;
 }
 
 .title {
   font-size: 2em;
-  margin-bottom: 0; /* Defend against potential browser default heading margins */
+  margin-bottom: 0;
 }
 
 .topic {
   margin-top: 10px;
-  margin-bottom: 0; /* Defend against potential browser default paragraph margins */
+  margin-bottom: 0;
 }
 
 .des {
   margin-top: 20px;
   max-width: 400px;
-  margin-bottom: 0; /* Defend against potential browser default paragraph margins */
+  margin-bottom: 0;
+  /* If not using gradient for .des, it will inherit 'color: white' from .content */
 }
 
 .buttons {
-    /* Ensure the button container itself doesn't add margin */
     margin-bottom: 0;
 }
 
 .buttons button {
-  margin: 10px 5px 0 0; /* Already has margin-bottom: 0 */
+  margin: 10px 5px 0 0;
+  padding: 10px 20px;
+  border: none; /* Or consider a themed border: border: 2px solid var(--gradient-purple); */
+  /* background: #ff5a5f; <-- Original background. For gradient text to show, this needs to change. */
+  background: transparent; /* Make button background transparent to show gradient text */
+  /* Alternatively, if you keep a solid background for the button, the text color should be solid, e.g., var(--gradient-purple) */
+  cursor: pointer;
+  font-size: 1em;
+
+  /* Apply gradient theme to button text */
+  color: var(--gradient-purple); /* Fallback */
+}
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .buttons button {
+    background-image: linear-gradient(var(--gradient-direction), var(--gradient-purple), var(--gradient-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+/* If you want buttons to have a solid theme color background instead of gradient text: */
+/*
+.buttons button {
+  margin: 10px 5px 0 0;
   padding: 10px 20px;
   border: none;
-  background: #ff5a5f;
-  color: white;
+  background: var(--gradient-purple); // Or your original #ff5a5f
+  color: white; // Text color that contrasts with button background
   cursor: pointer;
   font-size: 1em;
 }
+*/
+
 
 .thumbnail {
   display: flex;
@@ -95,25 +178,20 @@
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  /* Ensure no bottom margin */
   margin-bottom: 0;
 }
 
 .thumbnail .item {
   margin: 0 5px;
-  /* Ensure no bottom margin */
   margin-bottom: 0;
-  /* Ensure no bottom padding */
   padding-bottom: 0;
-  /* Add display block to inner images */
 }
 
 .thumbnail img {
   width: 100px;
   height: 60px;
   object-fit: cover;
-   /* Images are often inline by default, which can add tiny space below */
-  display: block; /* Ensures image behaves as a block element */
+  display: block;
 }
 
 .thumbnail .content {
@@ -130,10 +208,11 @@
 }
 
 .arrows button {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5); /* Keep semi-transparent background for visibility */
   border: none;
   padding: 10px;
-  color: white;
+  /* For arrow icons/text, using a solid theme color might be more legible than a gradient */
+  color: var(--gradient-cyan); /* Use one of the theme colors for better contrast */
   font-size: 2em;
   cursor: pointer;
 }
@@ -141,12 +220,13 @@
 .time {
   height: 5px;
   width: 0%;
-  background: #ff5a5f;
+  /* background: #ff5a5f; <-- Original */
+  /* Apply gradient to the time bar */
+  background: linear-gradient(var(--gradient-direction), var(--gradient-purple), var(--gradient-cyan));
   position: absolute;
   bottom: 0;
   left: 0;
   animation: timeRunning 7s linear infinite;
-  /* Ensure no margin/padding */
   margin-bottom: 0;
   padding-bottom: 0;
 }
@@ -160,14 +240,11 @@
   }
 }
 
-/* These rules modify behavior during transitions, shouldn't affect static layout */
 .next .list,
 .prev .list {
   transition: none;
 }
 
-/* General defense: Reset margin/padding on common block elements if needed */
-/* Add this only if you suspect default browser styles are interfering */
 /*
 .carousel p,
 .carousel h1,

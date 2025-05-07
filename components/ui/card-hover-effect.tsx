@@ -4,6 +4,14 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image"; // Import the Image component from Next.js
 import { useState } from "react";
 
+export interface ProjectItem {
+  image: string;
+  title: string;
+  description: string;
+  link: string;
+}
+
+
 export const HoverEffect = ({
   items,
   className,

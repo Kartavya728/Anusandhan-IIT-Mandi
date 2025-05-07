@@ -65,7 +65,7 @@ header a{
     line-height: 1.3em;
 }
 .carousel .list .item .topic{
-    color: #3ab7f1db;
+    color: #ac00fcee;
 }
 .carousel .list .item .buttons{
     display: grid;
@@ -76,7 +76,7 @@ header a{
 }
 .carousel .list .item .buttons button{
     border: none;
-    background-color: #009ffcee;
+    background-color: #9b00fcee;
     letter-spacing: 3px;
     font-family: Poppins;
     font-weight: 500;
