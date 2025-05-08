@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
-import { StickyScroll, ContentItem } from "../ui/sticky-scroll-reveal"; // Adjust path
+import { StickyScroll, ContentItem } from "@/components/ui/sticky-scroll-reveal";
+
 import { motion, Variants } from "framer-motion";
 
 // Gradient Text Component (Unchanged)
