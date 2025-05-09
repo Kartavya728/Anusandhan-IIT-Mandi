@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { StickyScroll, ContentItem } from "@/components/ui/sticky-scroll-reveal";
+import { StickyScroll, ContentItem } from "./Scroll";
 
 import { motion, Variants } from "framer-motion";
 
