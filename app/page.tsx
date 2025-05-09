@@ -2,7 +2,7 @@
 
 import React from "react"; // Import React
 import Carousel from "@/components/main/Carousel";
-import { Events } from "@/components/main/Events"; // Assuming named export based on previous examples
+import { Events } from "@/components/main/EventsScroll"; // Assuming named export based on previous examples
 import Hero from "@/components/main/Hero";
 import RegistrationCards from "@/components/main/Registrations"; // Assuming default
 import Spon from "@/components/main/Spon";
@@ -76,7 +76,7 @@ export default function Home(): JSX.Element {
           <Hero />
           <EventDatesTable />
           <Themes />
-          <Events /> {/* Ensure this is the correct casing and import type */}
+          <Events/> {/* Ensure this is the correct casing and import type */}
 
           <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16" id="speaker">
             <h1 className="text-3xl sm:text-4xl font-bold pt-6 pb-8 md:pb-12 text-center">
