@@ -92,7 +92,7 @@ const Footer = (): JSX.Element => {
         <div className="mb-4 text-sm text-center text-slate-400">
           <p>© {new Date().getFullYear()} IIT Mandi. All rights reserved.</p>
           <p className="mt-1">
-            Site by Kartavya Suryawanshi and Shivam Kumar
+            Site by Kartavya Suryawanshi
           </p>
         </div>
       </div>

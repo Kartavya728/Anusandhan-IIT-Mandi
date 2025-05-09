@@ -185,3 +185,61 @@ html {
     @apply bg-background text-foreground;
   }
 }
+/* In your globals.css or a relevant CSS file */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add these custom animations */
+@layer utilities {
+  @keyframes letterPopIn {
+    0% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.5) rotateX(-90deg);
+      filter: blur(5px);
+    }
+    50% {
+      opacity: 0.8;
+      transform: translateY(-10px) scale(1.1) rotateX(20deg);
+      filter: blur(1px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotateX(0deg);
+      filter: blur(0px);
+      /* Optional: Add a subtle glow effect once landed */
+      /* text-shadow: 0 0 3px #fff, 0 0 5px #fff, 0 0 8px #e60073, 0 0 10px #e60073; */
+    }
+  }
+
+  @keyframes fadeInSlow {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Optional: for a subtle pulsing background element */
+  @keyframes pulseSlow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+  }
+
+  .animate-letterPopIn {
+    animation: letterPopIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    opacity: 0; /* Initially hidden */
+  }
+
+  .animate-fadeInSlow {
+    animation: fadeInSlow 1s ease-out forwards;
+    opacity: 0; /* Initially hidden */
+  }
+
+  .animate-pulseSlow {
+    animation: pulseSlow 4s infinite ease-in-out;
+  }
+}
