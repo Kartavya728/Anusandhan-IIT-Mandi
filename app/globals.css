@@ -24,6 +24,27 @@
   
 }
 
+/* These styles will ONLY apply when screen width is LESS than 640px */
+/* Tailwind's 'sm' breakpoint is 640px, so we use 639.98px to target below it */
+@media (max-width: 639.98px) {
+  .mobile-height-table {
+    max-height: 20rem; /* Approx 320px, adjust as needed (e.g., 18rem, 22rem) */
+    overflow-y: auto;
+  }
+
+  .mobile-height-events {
+    max-height: 24rem; /* Approx 384px, adjust as needed (e.g., 20rem, 28rem) */
+    overflow-y: auto;
+  }
+}
+
+/* 
+  On screens 640px and wider, the above @media query will not apply.
+  The .mobile-height-table and .mobile-height-events divs will simply use
+  any other Tailwind classes they have (like rounded-lg, shadow, overflow-x-auto)
+  and their natural height or height determined by other CSS.
+*/
+
 /* Optional: If group-hover:animate-pause doesn't work reliably */
 /* .scroller:hover > div { */
   /* animation-play-state: paused; */
