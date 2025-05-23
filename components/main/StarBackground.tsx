@@ -6,29 +6,27 @@ import { Points, PointMaterial } from "@react-three/drei";
 // @ts-ignore
 import * as random from "maath/random/dist/maath-random.esm";
 
-// WebGL Support Check Hook
+// WebGL Support Check
 const useWebGLSupport = () => {
   const [isWebGLSupported, setIsWebGLSupported] = useState(true);
 
   useEffect(() => {
-    const canvas = document.createElement('canvas');
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-    if (!gl) {
-      setIsWebGLSupported(false);
-    }
+    const canvas = document.createElement("canvas");
+    const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+    if (!gl) setIsWebGLSupported(false);
   }, []);
 
   return isWebGLSupported;
 };
 
-// StarBackground Component (3D)
+// Star Background
 const StarBackground = (props: any) => {
-  const ref: any = useRef();
+  const ref = useRef<any>();
   const [sphere] = useState(() =>
     random.inSphere(new Float32Array(5000), { radius: 1.2 })
   );
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     ref.current.rotation.x -= delta / 10;
     ref.current.rotation.y -= delta / 15;
   });
@@ -40,7 +38,7 @@ const StarBackground = (props: any) => {
           transparent
           color="#1B0720E3"
           size={0.002}
-          sizeAttenuation={true}
+          sizeAttenuation
           depthWrite={false}
         />
       </Points>
@@ -48,33 +46,28 @@ const StarBackground = (props: any) => {
   );
 };
 
-// 2D Fallback Background Component
+// Fallback Background
 const FallbackBackground = () => (
-  <div className="w-full h-full ">
-    <div className="text-white text-4xl flex justify-center items-center h-full">
-
-    </div>
+  <div className="w-full h-full bg-black flex justify-center items-center text-white text-xl">
+    WebGL Not Supported
   </div>
 );
 
-// StarsCanvas Component (Main Canvas)
+// Main Canvas
 const StarsCanvas = () => {
   const isWebGLSupported = useWebGLSupport();
 
-  if (!isWebGLSupported) {
-    // Fallback 2D background if WebGL is not available
-    return <FallbackBackground />;
-  }
+  if (!isWebGLSupported) return <FallbackBackground />;
 
   return (
-    <div className="w-full h-auto fixed inset-0 z-10 pointer-events-none">
+    <div className="fixed inset-0 z-0 w-full h-full">
       <Canvas camera={{ position: [0, 0, 1] }}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={null}>
           <StarBackground />
         </Suspense>
       </Canvas>
     </div>
   );
-};  
+};
 
 export default StarsCanvas;
