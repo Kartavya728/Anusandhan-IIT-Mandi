@@ -92,7 +92,7 @@ function RegistrationSection() {
         {/* Register Now Button - Centered */}
         <div className="text-center mb-16"> {/* Wrapper div for centering the button */}
           <a
-            href="#registration" // Should ideally link to an actual registration form/page
+            href="https://forms.gle/EadMwK1BFwd6a2gq6" // Should ideally link to an actual registration form/page
             className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-cyan-500 shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-105"
           >
             Register Now
