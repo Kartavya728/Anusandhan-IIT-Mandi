@@ -53,14 +53,6 @@ const HeroContent = () => {
         >
          Anusandhan is a fair of multidisciplinary research and innovation of IIT Mandi, which includes Engineering & Technology (Mechanical Engineering, Civil Engineering, Computing and Electrical Engineering, Electronics Engineering, Robotics, IKSMHA, Computer science, and AI&ML), Basic Sciences (Physics, Chemistry, Mathematics, Biology, and Environmental sciences), Medical Science (Healthcare, Mental health, Physiology, and Medicine), Management and Humanities & Social Sciences (Economics, Literature, History, Sociology, Translation Studies, and Psychology) research, that provide participants to present and discuss their ideas among the research community and related experts in their domains. The Fair aims to open a pathway for collaborative research and innovative ideas among the research community at an international level for the welfare of society and sustainable development of resources.
         </motion.p>
-
-        <motion.a
-          variants={slideInFromLeft(1)}
-          href="#" // Consider adding a real link
-          className="py-2 px-6 button-primary text-center bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white cursor-pointer rounded-lg max-w-[200px] transition duration-200 ease-in-out"
-        >
-          Learn More!
-        </motion.a>
       </div>
 
       {/* Right Side Image */}

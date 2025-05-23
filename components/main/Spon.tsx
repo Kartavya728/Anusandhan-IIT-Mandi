@@ -1,34 +1,40 @@
-// src/components/main/Spon.tsx (or your actual path)
-"use client"; // Add if client-side interactions/hooks are used, or if animations require it.
+// src/components/main/Spon.tsx
+"use client";
 
-import React from 'react'; // React import
+import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion'; // For title animation
+import { motion } from 'framer-motion'; // For title animation (if you add a title)
 
 // Interface for individual sponsor data
 interface Sponsor {
   id: number;
   src: string;
-  alt: string;
+  alt: string; // This will be used as the name below the image
+  link?: string; // Optional: if you want to link the sponsor logo/name
 }
 
-// Define your sponsor images here
+// Define your sponsor images and names
 // IMPORTANT: Place these images in your `public` directory (e.g., public/sponsors/logo1.png)
 const sponsors: Sponsor[] = [
-  { id: 1, src: '/Images/c3.jpg', alt: 'Sponsor 1 Logo' },
-  { id: 2, src: '/Images/c3.jpg', alt: 'Sponsor 2 Logo' }, // Using same image for example
-  { id: 3, src: '/Images/c3.jpg', alt: 'Sponsor 3 Logo' },
-  { id: 4, src: '/Images/c3.jpg', alt: 'Sponsor 4 Logo' },
-  { id: 5, src: '/Images/c3.jpg', alt: 'Sponsor 5 Logo' },
-  { id: 6, src: '/Images/c3.jpg', alt: 'Sponsor 6 Logo' },
-  { id: 7, src: '/Images/c3.jpg', alt: 'Sponsor 7 Logo' },
-  // Add more sponsors as needed
+  { id: 1, src: '/Images/p.jpg', alt: 'Parashar Lake (35 Kms.)' },
+  { id: 2, src: '/Images/kullu.jpg', alt: 'Kullu (57 Kms.)' },
+  { id: 3, src: '/Images/manali.jpg', alt: 'Manali (94 Kms.)' },
+  { id: 4, src: '/Images/mak.jpg', alt: 'Manikaran (79 Kms.)' },
+  { id: 5, src: '/Images/bar.jpg', alt: 'Barot Valley (62 Kms.)' },
+  { id: 6, src: '/Images/atal.jpg', alt: 'Atal Valley (121 Kms.)' },
+  { id: 7, src: '/Images/sol.jpg', alt: 'Solang Valley (107 Kms.)' },
+  { id: 8, src: '/Images/d.jpg', alt: 'Dharamshaala (125 Kms.)' },
+  { id: 9, src: '/Images/pal.jpg', alt: 'Palampur (91 Kms.)' },
+  { id: 10, src: '/Images/jog.jpg', alt: 'Jogini Water Falls (98 Kms.)' },
+  { id: 11, src: '/Images/hid.jpg', alt: 'Hidimba Temple (84 Kms.)' },
+  { id: 12, src: '/Images/gana.jpg', alt: 'Kheerganga (98 Kms.)' },
 ];
+
 
 // Duplicate the array for seamless looping
 const duplicatedSponsors: Sponsor[] = [...sponsors, ...sponsors];
 
-// Gradient Text Component (define or import if not globally available)
+// Gradient Text Component (if you add a title like "Our Sponsors")
 interface GradientTextProps {
   children: React.ReactNode;
   className?: string;
@@ -39,78 +45,46 @@ const GradientText: React.FC<GradientTextProps> = ({ children, className }) => (
   </span>
 );
 
-// Animation variant for the title section
+// Optional: Animation variant for a title section if you add one
 const titleSectionVariants = {
   hidden: { opacity: 0, y: -20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
-
-
 function Spon(): JSX.Element {
   return (
-    // Section container: Assuming this sits on a light page background (e.g., #e9e5ff)
-    // If this section itself needs a dark background like bg-slate-900, apply it here.
-    // For now, assuming transparent background to inherit page background.
-    <div className="w-full py-12 md:py-20" id="contact">
-      <motion.div
-        className="text-center mb-10 md:mb-12"
-        variants={titleSectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.2 }}
-      >
-        <h1 className='text-3xl sm:text-4xl font-bold text-center'> {/* Removed inline text color */}
-          <GradientText>Our Sponsors</GradientText>
-        </h1>
-        <p className="text-slate-600 mt-3 text-lg"> {/* Changed text-gray-600 to text-slate-600 for consistency */}
-          Powering innovation together.
-        </p>
-      </motion.div>
-
-      {/* Reel 1 (Scroll Left) */}
+    // Section container
+    // Consider adding a title section here if desired
+    // <motion.div variants={titleSectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+    //   <h2 className="text-3xl font-bold mb-8 text-center">
+    //     <GradientText>Our Valued Sponsors</GradientText>
+    //   </h2>
+    // </motion.div>
+    <div className="w-full py-12 md:py-16" id="sponsors"> {/* Changed id to "sponsors" */}
+      {/* Single Scrolling Reel */}
       <div
         className="group scroller w-full overflow-hidden"
-        // Add data-direction attribute if your CSS animation relies on it
-        // data-direction="left"
+        // data-direction="left" // Or "right", depending on your CSS animation
       >
         <div
-          className="flex flex-nowrap w-max animate-scrollLeft group-hover:animate-pause"
+          className="flex flex-nowrap w-max animate-scrollLeft group-hover:animate-pause" // Or animate-scrollRight
         >
           {duplicatedSponsors.map((sponsor, index) => (
-            <div key={`left-${sponsor.id}-${index}`} className="flex-shrink-0 mx-4 md:mx-8 flex items-center justify-center h-28 md:h-36"> {/* Added fixed height to container */}
-              <Image
-                src={sponsor.src}
-                alt={sponsor.alt}
-                // It's better to provide layout="intrinsic" or "fixed" and actual dimensions,
-                // or "fill" with a sized parent if aspect ratio is unknown or varies.
-                // For logos, often intrinsic or fixed dimensions work well.
-                // Using width/height props will define the intrinsic size.
-                height={100} // Intrinsic height
-                width={250}  // Intrinsic width (adjust based on typical logo aspect ratios)
-                className="object-contain max-h-full max-w-full" // Ensure it fits within the parent's height and its own intrinsic width
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Reel 2 (Scroll Right) - Add some margin-top */}
-      <div
-        className="group scroller w-full overflow-hidden mt-6 md:mt-10"
-        // data-direction="right"
-      >
-        <div
-          className="flex flex-nowrap w-max animate-scrollRight group-hover:animate-pause"
-        >
-          {duplicatedSponsors.map((sponsor, index) => (
-            <div key={`right-${sponsor.id}-${index}`} className="flex-shrink-0 mx-4 md:mx-8 flex items-center justify-center h-28 md:h-36"> {/* Added fixed height */}
-               <Image
-                src={sponsor.src}
-                alt={sponsor.alt}
-                height={100}
-                width={250}
-                className="object-contain max-h-full max-w-full"
-              />
+            <div 
+              key={`${sponsor.id}-${index}`} 
+              className="flex-shrink-0 mx-6 md:mx-10 flex flex-col items-center justify-center text-center"
+            >
+              <div className="h-24 md:h-32 w-40 md:w-56 mb-2 flex items-center justify-center overflow-hidden"> {/* Container for image */}
+                <Image
+                  src={sponsor.src}
+                  alt={sponsor.alt} // Alt text is important for accessibility
+                  height={100} // Adjust as needed for desired logo size
+                  width={200}  // Adjust as needed
+                  className="object-contain max-h-full max-w-full"
+                />
+              </div>
+              <p className="text-sm md:text-base font-medium text-slate-700 dark:text-slate-300 mt-1 px-2"> {/* Styling for the name */}
+                {sponsor.alt} {/* Displaying the alt text as the name */}
+              </p>
             </div>
           ))}
         </div>
@@ -118,5 +92,4 @@ function Spon(): JSX.Element {
     </div>
   );
 }
-
 export default Spon;

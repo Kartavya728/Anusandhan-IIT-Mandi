@@ -121,18 +121,9 @@ const Carousel: React.FC = () => {
                 <div className="list" ref={sliderRef}>
                     {/* NOTE: Ensure image paths start with '/' and point to files in the 'public' directory */}
                     <div className="item">
-                        <Image src="/Images/c1.jpg" alt="slider1" width={600} height={600} />
+                        <Image src="/Images/image7.png" alt="slider1" width={600} height={600} />
                         <div className="content">
-                            <div className="author">IIT Mandi</div>
-                            <div className="title">Anual Research Fair</div>
-                            <div className="topic">ANUSANDHAN</div>
-                            <div className="des">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
-                            </div>
-                            <div className="buttons">
-                                <button>Locate</button>
-                                <button>Registration</button>
-                            </div>
+
                         </div>
                     </div>
                     <div className="item">
@@ -142,7 +133,7 @@ const Carousel: React.FC = () => {
                             <div className="title">Paper Presentaion</div>
                             <div className="topic">by ANUSANDHAN</div>
                             <div className="des">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                                Showcase your research findings and innovative ideas through paper presentations.
                             </div>
                             <div className="buttons">
                                 <button>Locate</button>
@@ -151,13 +142,13 @@ const Carousel: React.FC = () => {
                         </div>
                     </div>
                     <div className="item">
-                    <Image src="/Images/c3.jpg" alt="slider1" width={600} height={600} />
+                    <Image src="/Images/image4.jpeg.jpg" alt="slider1" width={600} height={600} />
                         <div className="content">
                             <div className="author">IIT Mandi</div>
-                            <div className="title">Panel Discussion</div>
+                            <div className="title">Poster Presentation</div>
                             <div className="topic">by ANUSANDHAN</div>
                             <div className="des">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                                Create visually appealing posters to present your research projects.
                             </div>
                             <div className="buttons">
                                 <button>Locate</button>
@@ -169,10 +160,10 @@ const Carousel: React.FC = () => {
                     <Image src="/Images/c4.jpg" alt="slider1" width={600} height={600} />
                         <div className="content">
                             <div className="author">IIT Mandi</div>
-                            <div className="title">Networking & Collaboration</div>
+                            <div className="title">Panel Disscusion</div>
                             <div className="topic"> by ANUSANDHAN</div>
                             <div className="des">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut sequi, rem magnam nesciunt minima placeat, itaque eum neque officiis unde, eaque optio ratione aliquid assumenda facere ab et quasi ducimus aut doloribus non numquam. Explicabo, laboriosam nisi reprehenderit tempora at laborum natus unde. Ut, exercitationem eum aperiam illo illum laudantium?
+                                Engage in insightful discussions with industry experts and scholars on various topics
                             </div>
                             <div className="buttons">
                                 <button>Locate</button>
@@ -180,34 +171,35 @@ const Carousel: React.FC = () => {
                             </div>
                         </div>
                     </div>
+                    
                 </div>
                 {/* list thumbnail */}
                 <div className="thumbnail" ref={thumbnailBorderRef}>
                     <div className="item">
-                    <Image src="/Images/c8.jpg" alt="slider1" width={600} height={600} />
+                    <Image src="/Images/c4.jpg" alt="slider1" width={600} height={600} />
                         <div className="content">
-                            <div className="title">Anusandhan</div>
+                            <div className="title">Anusandhan1</div>
                             <div className="IIT Mandi">IIT Mandi</div>
                         </div>
                     </div>
                     <div className="item">
-                    <Image src="/Images/c7.jpg" alt="slider1" width={600} height={600} />
+                    <Image src="/Images/image5.jpg" alt="slider1" width={600} height={600} />
                         <div className="content">
-                            <div className="title">Anusandhan</div>
+                            <div className="title">Anusandhan2</div>
                             <div className="IIT Mandi">IIT Mandi</div>
                         </div>
                     </div>
                     <div className="item">
-                    <Image src="/Images/c6.jpg" alt="slider1" width={600} height={600} />
+                    <Image src="/Images/c2.jpg" alt="slider1" width={600} height={600} />
                         <div className="content">
-                            <div className="title">Anusandhan</div>
+                            <div className="title">Anusandhan3</div>
                             <div className="IIT Mandi">IIT Mandi</div>
                         </div>
                     </div>
                     <div className="item">
-                    <Image src="/Images/c5.jpg" alt="slider1" width={600} height={600} />
+                    <Image src="/Images/image4.jpeg.jpg" alt="slider1" width={600} height={600} />
                         <div className="content">
-                            <div className="title">Anusandhan</div>
+                            <div className="title">Anusandhan4</div>
                             <div className="IIT Mandi">IIT Mandi</div>
                         </div>
                     </div>

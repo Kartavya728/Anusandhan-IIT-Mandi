@@ -18,7 +18,7 @@ const themesData: ThemeItem[] = [
     title: 'A: Engineering & Technologies',
     subThemes: [
       "Industry 4.0 and Smart Manufacturing", "Advancement in materials and their processing", "Computer-aided manufacturing, robotics, and automation", "Multiphase flows", "Combustion and Radiation", "Alternate clean energy sources", "Design and analysis of mechanical components", "Biomechanics and Bioengineering",
-      "Sustainable Infrastructure Development", "Urban Planning and Smart Cities", "Resilient structures", "Artificial Intelligence for Sustainability", "Power system and power electronics & drives", "Electric Transportation", "Communications & Signal Processing",
+      "Sustainable Infrastructure Development", "Urban Planning and Smart Cities", "Resilient structures", "Artificial Intelligence for Sustainability", "Power system and power electronics & drives", "Electric Transportation", "Communications & Signal Processing","Machine Learning and Artificial Intelligence"
     ],
   },
   {

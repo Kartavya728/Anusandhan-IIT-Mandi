@@ -13,11 +13,12 @@ interface EventDateItem {
 
 // Event dates data with type (YOUR ORIGINAL)
 const eventDates: EventDateItem[] = [
-  { id: 1, event: "Last Date of Abstract/ Full-Length Paper Submission", date: "08th June 2024", previousDate: null },
-  { id: 2, event: "Last Date of Registration", date: "10th June 2024", previousDate: null },
-  { id: 3, event: "Last date of full-length camera-ready paper submission", date: "15th June 2024", previousDate: null },
-  { id: 4, event: "Date of Events", date: "18th - 19th June 2024", previousDate: null },
+  { id: 1, event: "Last date of Abstract/Full-Length Paper Submission", date: "5th June, 2025", previousDate: null },
+  { id: 2, event: "Notification of acceptance", date: "10th June, 2025", previousDate: null },
+  { id: 3, event: "Last date of full-length camera-ready publication", date: "20th June, 2025", previousDate: null },
+  { id: 4, event: "Date of event", date: "18th-19th June, 2025", previousDate: null },
 ];
+
 
 // Gradient Text Component (reusable - YOUR ORIGINAL)
 interface GradientTextProps {
@@ -154,12 +155,20 @@ const EventDatesTable = (): JSX.Element => {
               Please ensure to adhere to these important dates for a smooth participation process.
             </p>
             {/* MODIFIED: Responsive padding and text size for button */}
-            <a
-              href="#registration"
-              className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-cyan-500 shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-105"
-            >
-              Register Now
-            </a>
+<a
+  href="https://docs.google.com/document/d/1E5Y_Ug-ZfCeXrS2IHQi7vn5-kJX9n9ok/edit"
+  className="inline-flex items-center px-10 py-2.5 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-cyan-500 shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-105"
+>
+  Final Schedule
+</a>
+<a
+  href="#registration"
+  className="inline-flex items-center ml-8 px-5 py-2.5 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-cyan-500 shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-105"
+>
+  Register Now
+</a>
+
+
           </motion.div>
         </motion.div>
       </motion.div>

@@ -66,10 +66,10 @@ const Aboutiit = () => {
 
           <motion.a
             variants={slideInFromRight(1)}
-            href="#"
+            href="https://www.iitmandi.ac.in"
             className="py-2.5 px-5 sm:py-3 sm:px-6 button-primary text-center bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white cursor-pointer rounded-lg transition duration-200 ease-in-out self-start"
           >
-            Learn More!
+            More Details
           </motion.a>
         </div>
       </motion.div>

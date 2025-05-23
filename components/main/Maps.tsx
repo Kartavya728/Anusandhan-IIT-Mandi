@@ -1,16 +1,14 @@
 "use client";
-import React, { useEffect, useRef, ReactNode } from 'react'; // Added ReactNode
-import { motion, Variants as FramerVariants } from 'framer-motion'; // Added Variants as FramerVariants for clarity
+import React, { useEffect, useRef, ReactNode } from 'react';
+import { motion, Variants as FramerVariants } from 'framer-motion';
 
-// It's good practice to declare Leaflet types if you use them extensively.
-// For this component, direct 'any' might be acceptable for window.L if not installing @types/leaflet
 declare global {
   interface Window {
-    L: any; // Use 'any' or install @types/leaflet for proper Leaflet types
+    L: any; // Use 'any' or install @types/leaflet
   }
 }
 
-// IIT Mandi coordinates (constants are fine as they are)
+// IIT Mandi coordinates
 const IIT_MANDI_LAT = 31.7754;
 const IIT_MANDI_LNG = 76.9861;
 
@@ -54,11 +52,12 @@ const textBlockVariants: FramerVariants = {
 };
 
 export default function LeafletMapIITMandi(): JSX.Element {
-  const mapRef = useRef<HTMLDivElement | null>(null); // Typed the ref for the map div
-  const mapInstanceRef = useRef<any | null>(null); // Leaflet map instance, 'any' or specific Leaflet type
-  const LRef = useRef<any | null>(null); // Leaflet 'L' object, 'any' or specific Leaflet type
+  const mapRef = useRef<HTMLDivElement | null>(null);
+  const mapInstanceRef = useRef<any | null>(null);
+  const LRef = useRef<any | null>(null);
 
   useEffect(() => {
+    // Leaflet setup (as before)
     if (!document.getElementById('leaflet-css')) {
       const leafletCSS = document.createElement('link');
       leafletCSS.id = 'leaflet-css';
@@ -69,7 +68,7 @@ export default function LeafletMapIITMandi(): JSX.Element {
       document.head.appendChild(leafletCSS);
     }
 
-    const loadLeafletJS = (): Promise<boolean> => { // Typed the return Promise
+    const loadLeafletJS = (): Promise<boolean> => {
       return new Promise((resolve) => {
         if (window.L) {
           LRef.current = window.L;
@@ -78,7 +77,7 @@ export default function LeafletMapIITMandi(): JSX.Element {
         }
         if (document.getElementById('leaflet-js')) {
           let attempts = 0;
-          const intervalId = setInterval(() => { // Store intervalId to clear it
+          const intervalId = setInterval(() => {
             if (window.L) {
               LRef.current = window.L;
               clearInterval(intervalId);
@@ -118,7 +117,7 @@ export default function LeafletMapIITMandi(): JSX.Element {
         if (!leafletLoaded) console.warn("Leaflet script not loaded for map initialization.");
         return;
       }
-      const L = LRef.current; // L is now 'any' or your Leaflet type
+      const L = LRef.current;
 
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
@@ -151,39 +150,58 @@ export default function LeafletMapIITMandi(): JSX.Element {
         mapInstanceRef.current = null;
       }
     };
-  }, []); // Empty dependency array for mount/unmount effect
+  }, []);
 
   return (
-    <div className="flex flex-col items-center w-full py-10 px-4 bg-slate-900 rounded-lg shadow-xl relative z-10">
+    <div className="flex flex-col items-center w-full py-10 px-4 rounded-lg relative z-10">  {/* Main container: Adding background and padding*/}
       <motion.div
-        className="w-full"
+        className="w-full max-w-4xl mx-auto" // Add max-width for better layout
         variants={contentWrapperVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.1 }}
       >
         <motion.h2
-          className="text-3xl font-bold mb-8 text-center"
+          className="text-3xl font-bold mb-4 text-center" // Reduced mb
           variants={titleVariants}
         >
-          <GradientText>IIT Mandi Location</GradientText>
+          <GradientText>IIT Mandi Location & Travel</GradientText>  {/* Changed Heading */}
         </motion.h2>
+      {/* Added  Information Section */}
+        <motion.div variants={textBlockVariants} className="mb-8">
+          <p className="text-lg font-semibold text-black mb-2">Welcome to Anusandhan 2.O!</p>
+          <p className="text-slate-800 mb-4">Anusandhan 2.O will be held at the Indian Institute of Technology Mandi (IIT Mandi) from 18th-19th June 2024. Mandi is very well connected through roads from Delhi and Chandigarh. Public transport of Himachal Pradesh, Rajasthan, Punjab and Haryana roadways ply their buses on this route. Private luxury buses are readily available to travel on this route through the road. Most of the buses operate during night and reach Mandi early in the morning. One may easily hire a car from Delhi & Chandigarh to reach Mandi. </p>
 
-        <motion.div
-          className="w-full max-w-3xl mx-auto"
-          variants={mapContainerVariants}
-        >
-<div
-  ref={mapRef}
-  className="w-full h-96  max-w-16xl mx-auto rounded-2xl border-4 border-cyan-400 shadow-2xl overflow-hidden"
-/>
+          <p className="text-lg font-semibold text-black mb-2">Distance & average journey time from major cities to Mandi via road:</p>
+          <ul className="list-disc list-inside text-slate-800">
+            <li>Delhi : 430 Km (8.5 hrs)</li>
+            <li>Chandigarh : 185 Km (04 hrs)</li>
+            <li>Ambala : 235 Km (05 hrs)</li>
+            <li>Ropar : 140 Km (03 hrs)</li>
+          </ul>
 
+          <p className="text-lg font-semibold text-black mt-4 mb-2">Local/ City Transport:</p>
+          <p className="text-slate-800">IIT Mandi North campus is approximately 23 Km from Mandi bus stand. It takes 40-45 minutes to reach IIT Mandi campus from Mandi bus stand Himachal roadways, private buses & cars on rent are available to travel from Mandi bus terminal to Kamand or Salgi village. The buses normally ply during day time on regular intervals. Cars on rent are available from outside of Mandi bus station round the clock. Normal cab charges from Mandi bus stand to campus is between 800 to 1000 Rs.</p>
+
+          <p className="text-lg font-semibold text-black mt-4 mb-2">Institute Transport Service:</p>
+          <p className="text-slate-800">Visitors/ Guests may request to book a car/cab from the institute. The service is subject to availability of vehicles</p>
         </motion.div>
 
-        <motion.div className="mt-8 text-center" variants={textBlockVariants}>
-          <p className="text-lg font-semibold text-slate-100">Indian Institute of Technology Mandi</p>
-          <p className="text-slate-300">Kamand Campus, Himachal Pradesh 175005</p>
-          <p className="text-slate-400 mt-2">Coordinates: {IIT_MANDI_LAT}, {IIT_MANDI_LNG}</p>
+        {/* Map Container */}
+        <motion.div
+          className="w-full"
+          variants={mapContainerVariants}
+        >
+          <div
+            ref={mapRef}
+            className="w-full h-96  max-w-16xl mx-auto rounded-2xl border-4 border-cyan-400 shadow-2xl overflow-hidden"
+          />
+        </motion.div>
+
+        <motion.div className="mt-6 text-center" variants={textBlockVariants}> {/* Reduced mt */}
+          <p className="text-lg font-semibold text-black">Indian Institute of Technology Mandi</p>
+          <p className="text-slate-950">Kamand Campus, Himachal Pradesh 175005</p>
+          <p className="text-slate-950 mt-2">Coordinates: {IIT_MANDI_LAT}, {IIT_MANDI_LNG}</p>
         </motion.div>
       </motion.div>
     </div>

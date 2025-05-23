@@ -106,26 +106,24 @@ export default function HomeClient({ projects }: HomeClientProps): JSX.Element {
 
           <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16" id="speaker">
             <h1 className="text-3xl sm:text-4xl font-bold pt-6 pb-8 md:pb-12 text-center">
-              <GradientText>Speakers</GradientText>
+              <GradientText>Organising Commitee</GradientText>
             </h1>
             <HoverEffect items={projects} /> {/* Use projects from props */}
           </section>
           
-          <div className="w-full">
+
+
+          <div className="w-full  text-slate-700" id="registration">
+            <RegistrationCards />
+          </div>
+                    <div className="w-full">
              <Maps />
           </div>
-
-          <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 text-slate-700" id="registration">
+          <div className="w-full">
             <h1 className="text-3xl sm:text-4xl font-bold pt-6 pb-8 md:pb-12 text-center">
-              <GradientText>Registration</GradientText>
-            </h1>
-            <p className="text-base md:text-lg leading-relaxed mb-8 text-center md:text-left">
-              At least one author of each accepted abstract/full-length paper must register for the submitted work to be presented in the proceedings. Registration fees include hostel accommodation (17th-19th June), food (breakfast, lunch, snacks, conference refreshments and dinner) during conference days (18-19th June), conference gala-dinner, and registration kit:
-            </p>
-            <RegistrationCards />
-          </section>
-
-          <MobileSpecificWrapper><Spon /></MobileSpecificWrapper>
+              <GradientText>travel Destinatinons</GradientText></h1>
+              <Spon/>
+          </div>
         </div>
       </main>
     </>

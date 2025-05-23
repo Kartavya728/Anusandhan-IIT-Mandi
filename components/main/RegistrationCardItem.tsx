@@ -1,54 +1,53 @@
-"use client"; // If this component is in its own file
+"use client";
 
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-// You might want to move this interface to a shared types file if used elsewhere
 interface RegistrationItemData {
   id: string | number;
   title: string;
-  registrationLink: string;
+  registrationLink: string; // Kept for potential future use
   price: string;
 }
 
 interface RegistrationCardItemProps {
   item: RegistrationItemData;
-  index: number; // For the animation delay
+  index: number;
 }
 
 function RegistrationCardItem({ item, index }: RegistrationCardItemProps) {
   const ref = useRef(null);
-  // Each RegistrationCardItem now correctly has its own ref and useInView call
+  // Using the same useInView settings as before
   const isInView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
 
   return (
     <motion.li
-      ref={ref} // Assign the ref to the motion component
+      ref={ref}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="relative bg-white rounded-2xl border-2 z-40 shadow-lg overflow-hidden p-6 flex flex-col sm:flex-row justify-between items-center"
+      className="relative bg-slate-800 rounded-2xl border-2 z-40 shadow-xl overflow-hidden px-4 py-3 flex flex-col sm:flex-row justify-between items-center"
+      // Applying the new theme gradient to the border
       style={{
-        borderImage: "linear-gradient(to right, #7C3AED, #60A5FA) 1",
+        borderImageSource: 'linear-gradient(90.01deg, #e59cff 0.01%, #ba9cff 50.01%, #9cb2ff 100%)',
+        borderImageSlice: 1,
+        // borderWidth: '2px', // Already handled by border-2 class
+        // borderStyle: 'solid', // Already handled by border-2 class
       }}
     >
+      {/* Title Section */}
       <div className="flex-grow text-center sm:text-left">
-        <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-1">
+        <h3 className="text-base sm:text-lg font-semibold text-slate-100 mb-0"> {/* Light text color for title */}
           {item.title}
         </h3>
-        <p className="text-base font-medium text-red-600">{item.price}</p>
       </div>
 
-      <motion.a
-        href={item.registrationLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-4 sm:mt-0 sm:ml-6 px-6 py-2 z-50 text-sm font-semibold text-white rounded-full bg-gradient-to-r from-purple-600 to-blue-400 hover:from-purple-700 hover:to-blue-500 transition-all shadow"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        Register
-      </motion.a>
+      {/* Price Section */}
+      <div className="text-base sm:text-lg font-bold text-pink-300 mt-2 sm:mt-0 sm:ml-4"> {/* Light, accented color for price */}
+        {item.price}
+      </div>
     </motion.li>
   );
 }
+
+export default RegistrationCardItem;

@@ -27,7 +27,7 @@ const content: ContentItem[] = [
     title: "Paper Presentation",
     description:
       "Showcase your research findings and innovative ideas through formal presentations. Engage with peers and experts in your field.",
-    src: "/Images/e1.jpeg",
+    src: "/Images/ss.jpg",
   },
   {
     title: "Poster Presentation",
