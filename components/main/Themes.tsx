@@ -126,7 +126,7 @@ export default function Themes(): JSX.Element {
           viewport={viewportConfig}
         >
           <motion.h2
-            className="text-4xl font-bold mb-6 text-center" // Removed text-purple-700
+            className="text-6xl font-bold mb-6 text-center" // Removed text-purple-700
             variants={titleVariants}
           >
             <GradientText>Research Themes</GradientText> {/* Applied GradientText */}

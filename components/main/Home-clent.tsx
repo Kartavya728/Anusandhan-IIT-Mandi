@@ -105,7 +105,7 @@ export default function HomeClient({ projects }: HomeClientProps): JSX.Element {
           <MobileSpecificWrapper><Events /></MobileSpecificWrapper>
 
           <section className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16" id="speaker">
-            <h1 className="text-3xl sm:text-4xl font-bold pt-6 pb-8 md:pb-12 text-center">
+            <h1 className="text-3xl sm:text-6xl font-bold pt-6 pb-8 md:pb-12 text-center">
               <GradientText>Organising Commitee</GradientText>
             </h1>
             <HoverEffect items={projects} /> {/* Use projects from props */}
@@ -120,7 +120,7 @@ export default function HomeClient({ projects }: HomeClientProps): JSX.Element {
              <Maps />
           </div>
           <div className="w-full">
-            <h1 className="text-3xl sm:text-4xl font-bold pt-6 pb-8 md:pb-12 text-center">
+            <h1 className="text-3xl sm:text-6xl font-bold pt-6 pb-8 md:pb-12 text-center">
               <GradientText>Travel Destinatinons</GradientText></h1>
               <Spon/>
           </div>

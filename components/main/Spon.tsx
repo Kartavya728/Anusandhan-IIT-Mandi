@@ -14,7 +14,6 @@ interface Sponsor {
 }
 
 // Define your sponsor images and names
-// IMPORTANT: Place these images in your `public` directory (e.g., public/sponsors/logo1.png)
 const sponsors: Sponsor[] = [
   { id: 1, src: '/Images/p.jpg', alt: 'Parashar Lake (35 Kms.)' },
   { id: 2, src: '/Images/kullu.jpg', alt: 'Kullu (57 Kms.)' },
@@ -50,40 +49,46 @@ const titleSectionVariants = {
   hidden: { opacity: 0, y: -20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
+
 function Spon(): JSX.Element {
   return (
-    // Section container
-    // Consider adding a title section here if desired
-    // <motion.div variants={titleSectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-    //   <h2 className="text-3xl font-bold mb-8 text-center">
-    //     <GradientText>Our Valued Sponsors</GradientText>
-    //   </h2>
-    // </motion.div>
-    <div className="w-full py-12 md:py-16" id="sponsors"> {/* Changed id to "sponsors" */}
-      {/* Single Scrolling Reel */}
+    <div className="w-full py-12 md:py-16" id="sponsors">
+      {/* Optional Title Section Example
+      <motion.div 
+        variants={titleSectionVariants} 
+        initial="hidden" 
+        whileInView="visible" 
+        viewport={{ once: true, amount: 0.2 }}
+        className="mb-10 text-center" // Added margin-bottom for spacing if title is used
+      >
+        <h2 className="text-3xl md:text-4xl font-bold">
+          <GradientText>Places to Visit Nearby</GradientText>
+        </h2>
+      </motion.div>
+      */}
       <div
         className="group scroller w-full overflow-hidden"
-        // data-direction="left" // Or "right", depending on your CSS animation
       >
         <div
-          className="flex flex-nowrap w-max animate-scrollLeft group-hover:animate-pause" // Or animate-scrollRight
+          className="flex flex-nowrap w-max animate-scrollLeft group-hover:animate-pause"
         >
           {duplicatedSponsors.map((sponsor, index) => (
-            <div 
-              key={`${sponsor.id}-${index}`} 
-              className="flex-shrink-0 mx-6 md:mx-10 flex flex-col items-center justify-center text-center"
+            <div
+              key={`${sponsor.id}-${index}`}
+              // MODIFIED: Reduced horizontal margins
+              className="flex-shrink-0 mx-1.5 md:mx-2.5 flex flex-col items-center justify-center text-center"
             >
-              <div className="h-24 md:h-32 w-40 md:w-56 mb-2 flex items-center justify-center overflow-hidden"> {/* Container for image */}
+              <div className="h-24 md:h-32 w-40 md:w-56 mb-2 flex items-center justify-center overflow-hidden rounded-lg shadow-md"> {/* Added rounded-lg and shadow-md for better visual separation of images */}
                 <Image
                   src={sponsor.src}
-                  alt={sponsor.alt} // Alt text is important for accessibility
-                  height={100} // Adjust as needed for desired logo size
-                  width={200}  // Adjust as needed
+                  alt={sponsor.alt}
+                  height={100}
+                  width={200}
                   className="object-contain max-h-full max-w-full"
                 />
               </div>
-              <p className="text-sm md:text-base font-medium text-slate-700 dark:text-slate-300 mt-1 px-2"> {/* Styling for the name */}
-                {sponsor.alt} {/* Displaying the alt text as the name */}
+              <p className="text-sm md:text-base font-medium text-slate-700 dark:text-slate-300 mt-1 px-2">
+                {sponsor.alt}
               </p>
             </div>
           ))}

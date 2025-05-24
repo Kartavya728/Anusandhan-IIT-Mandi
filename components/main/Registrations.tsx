@@ -71,7 +71,7 @@ function RegistrationSection() {
       id="registration"
     >
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl sm:text-4xl font-bold pt-6 pb-8 md:pb-12 text-center">
+        <h1 className="text-3xl sm:text-6xl font-bold pt-6 pb-8 md:pb-12 text-center">
           <GradientText>Registration & Submission</GradientText>
         </h1>
         

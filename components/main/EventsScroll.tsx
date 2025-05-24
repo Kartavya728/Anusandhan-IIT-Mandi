@@ -55,7 +55,7 @@ export function Events(): JSX.Element {
     <section className="w-full bg-slate-900 py-12 sm:py-16 md:py-20 lg:py-24 relative" id="events">
       <motion.h2
         // MODIFIED: Responsive text size and bottom margin for the title
-        className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16"
+        className="text-2xl sm:text-3xl lg:text-6xl font-bold text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16"
         variants={titleVariants}
         initial="hidden"
         whileInView="visible"

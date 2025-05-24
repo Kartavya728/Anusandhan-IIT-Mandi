@@ -162,7 +162,7 @@ export default function LeafletMapIITMandi(): JSX.Element {
         viewport={{ once: false, amount: 0.1 }}
       >
         <motion.h2
-          className="text-3xl font-bold mb-4 text-center" // Reduced mb
+          className="text-6xl font-bold mb-4 text-center" // Reduced mb
           variants={titleVariants}
         >
           <GradientText>IIT Mandi Location & Travel</GradientText>  {/* Changed Heading */}

@@ -100,7 +100,7 @@ const Footer = () => (
     <div className="w-full max-w-screen-xl flex flex-col items-center justify-center mx-auto">
       {/* Key Contacts Section */}
       <div className="w-full mb-10 md:mb-16">
-        <h2 className="text-2xl font-semibold text-center mb-8 md:mb-10">
+        <h2 className="text-6xl font-semibold text-center mb-8 md:mb-10">
           <GradientText>Contact Details</GradientText>
         </h2>
         <div className={`grid grid-cols-1 ${keyContactsData.length > 1 ? 'md:grid-cols-2' : ''} gap-8`}>
