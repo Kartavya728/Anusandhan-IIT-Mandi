@@ -169,15 +169,15 @@ export default function LeafletMapIITMandi(): JSX.Element {
         </motion.h2>
       {/* Added  Information Section */}
         <motion.div variants={textBlockVariants} className="mb-8">
-          <p className="text-lg font-semibold text-black mb-2">Welcome to Anusandhan 2.O!</p>
+          <p className="text-lg font-semibold text-black mb-2">Welcome to Anusandhan 3.O!</p>
           <p className="text-slate-800 mb-4">Anusandhan 2.O will be held at the Indian Institute of Technology Mandi (IIT Mandi) from 18th-19th June 2024. Mandi is very well connected through roads from Delhi and Chandigarh. Public transport of Himachal Pradesh, Rajasthan, Punjab and Haryana roadways ply their buses on this route. Private luxury buses are readily available to travel on this route through the road. Most of the buses operate during night and reach Mandi early in the morning. One may easily hire a car from Delhi & Chandigarh to reach Mandi. </p>
 
           <p className="text-lg font-semibold text-black mb-2">Distance & average journey time from major cities to Mandi via road:</p>
           <ul className="list-disc list-inside text-slate-800">
             <li>Delhi : 430 Km (8.5 hrs)</li>
-            <li>Chandigarh : 185 Km (04 hrs)</li>
-            <li>Ambala : 235 Km (05 hrs)</li>
-            <li>Ropar : 140 Km (03 hrs)</li>
+            <li>Chandigarh : 185 Km (4 hrs)</li>
+            <li>Ambala : 235 Km (5 hrs)</li>
+            <li>Ropar : 140 Km (3 hrs)</li>
           </ul>
 
           <p className="text-lg font-semibold text-black mt-4 mb-2">Local/ City Transport:</p>

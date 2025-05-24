@@ -90,15 +90,6 @@ function RegistrationSection() {
         </div>
 
         {/* Register Now Button - Centered */}
-        <div className="text-center mb-16"> {/* Wrapper div for centering the button */}
-          <a
-            href="https://forms.gle/EadMwK1BFwd6a2gq6" // Should ideally link to an actual registration form/page
-            className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-cyan-500 shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-105"
-          >
-            Register Now
-          </a>
-        </div>
-
         {/* Accommodation Information Section */}
         <div 
           className="mb-16 p-6 bg-slate-800 rounded-xl shadow-xl"
@@ -130,7 +121,8 @@ function RegistrationSection() {
         >
           <h2 className="text-2xl font-semibold text-slate-100 mb-4">Paper Submission</h2>
           <p className="text-slate-300 leading-relaxed mb-6">
-            Selected full-length papers will be published in reputed Conference proceedings. Please adhere to the guidelines and use the templates provided below.
+            Those whose abstracts will be selected for the conference have to submit their full papers by 21st June, 2025, to ensure smooth presentation at the conference.
+<br/>            Selected full-length papers will be published in reputed Conference proceedings. Please adhere to the guidelines and use the templates provided below.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
             <div>

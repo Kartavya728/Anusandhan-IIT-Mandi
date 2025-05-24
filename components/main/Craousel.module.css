@@ -197,25 +197,32 @@
 .thumbnail .content {
   display: none;
 }
-
 .arrows {
   position: absolute;
   width: 100%;
   top: 50%;
+   background: rgba(0, 0, 0, 0.905);
   display: flex;
   justify-content: space-between;
   transform: translateY(-50%);
 }
 
 .arrows button {
-  background: rgba(0, 0, 0, 0.5); /* Keep semi-transparent background for visibility */
+  background: rgba(255, 255, 255, 0.905); /* Darker background */
   border: none;
-  padding: 10px;
-  /* For arrow icons/text, using a solid theme color might be more legible than a gradient */
-  color: var(--gradient-cyan); /* Use one of the theme colors for better contrast */
+  padding: 10px 20px;
+  color: rgb(0, 0, 0); /* White arrow text */
   font-size: 2em;
   cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
 }
+
+.arrows button:hover {
+  background: rgba(0, 0, 0, 1);
+  color: white; /* Fully dark on hover */
+}
+
 
 .time {
   height: 5px;

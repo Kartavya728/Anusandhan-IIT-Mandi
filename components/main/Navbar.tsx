@@ -15,8 +15,8 @@ const Navbar = () => {
             height={50}
             className="cursor-pointer hover:animate-spin-slow"
           />
-          <span className="font-bold text-lg text-black hidden md:block">
-            Anusandha IIT Mandi
+          <span className="font-bold text-lg text-purple-700 hidden md:block">
+            Anusandhan IIT Mandi
           </span>
         </Link>
 
@@ -32,7 +32,7 @@ const Navbar = () => {
         {/* Right Label - This is not a link, so it remains a div */}
 <div className="flex items-center gap-1 text-purple-700 font-semibold text-sm md:text-base hover:scale-105 transition-transform duration-200">
   <Image
-    src="/scri.png"
+    src="/scrilogo.png"
     alt="logo"
     width={40}
     height={40}

@@ -45,9 +45,9 @@ const footerData: FooterColumn[] = [
   {
     title: "Quick Contact",
     links: [
-      { icon: FaPhoneAlt, text: "+91 12345 67890", href: "tel:+911234567890" },
-      { icon: FaEnvelope, text: "info@anusandhan.events", href: "mailto:info@anusandhan.events" },
-      { icon: FaMapMarkerAlt, text: "IIT Mandi, Kamand, HP", href: "#map-section" },
+      { icon: FaPhoneAlt, text: "+91 9123386175", href: "tel:+919123386175" },
+      { icon: FaEnvelope, text: "scri@students.iitmandi.ac.in", href: "mailto:scri@students.iitmandi.ac.in" },
+      { icon: FaMapMarkerAlt, text: "IIT Mandi, Kamand, Himachal Pradesh", href: "#map-section" },
     ],
   },
   {
@@ -80,7 +80,7 @@ const keyContactsData: KeyContact[] = [
       "SCRI Club Co-ordinator",
       "IIT Mandi, Mandi - 175005",
     ],
-    email: "scri@students.iitmandi.ac.in",
+    email: "d24059@students.iitmandi.ac.in",
   },
   {
     role: "Sponsorship Head",
@@ -91,7 +91,7 @@ const keyContactsData: KeyContact[] = [
       "SCRI Club Co-ordinator",
       "IIT Mandi, Mandi - 175005",
     ],
-    email: "scri@students.iitmandi.ac.in",
+    email: "d24059@students.iitmandi.ac.in",
   },
 ];
 

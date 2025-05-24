@@ -121,7 +121,7 @@ export default function HomeClient({ projects }: HomeClientProps): JSX.Element {
           </div>
           <div className="w-full">
             <h1 className="text-3xl sm:text-4xl font-bold pt-6 pb-8 md:pb-12 text-center">
-              <GradientText>travel Destinatinons</GradientText></h1>
+              <GradientText>Travel Destinatinons</GradientText></h1>
               <Spon/>
           </div>
         </div>

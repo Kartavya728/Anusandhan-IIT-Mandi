@@ -178,39 +178,68 @@ const Carousel: React.FC = () => {
                     <div className="item">
                     <Image src="/Images/c4.jpg" alt="slider1" width={600} height={600} />
                         <div className="content">
-                            <div className="title">Anusandhan1</div>
-                            <div className="IIT Mandi">IIT Mandi</div>
+
                         </div>
                     </div>
                     <div className="item">
                     <Image src="/Images/image5.jpg" alt="slider1" width={600} height={600} />
                         <div className="content">
-                            <div className="title">Anusandhan2</div>
-                            <div className="IIT Mandi">IIT Mandi</div>
+
                         </div>
                     </div>
                     <div className="item">
                     <Image src="/Images/c2.jpg" alt="slider1" width={600} height={600} />
                         <div className="content">
-                            <div className="title">Anusandhan3</div>
-                            <div className="IIT Mandi">IIT Mandi</div>
+
                         </div>
                     </div>
                     <div className="item">
                     <Image src="/Images/image4.jpeg.jpg" alt="slider1" width={600} height={600} />
                         <div className="content">
-                            <div className="title">Anusandhan4</div>
-                            <div className="IIT Mandi">IIT Mandi</div>
+
+                        </div>
+                    </div>
+                                        <div className="item">
+                    <Image src="/Images/c2.jpg" alt="slider1" width={600} height={600} />
+                        <div className="content">
+
                         </div>
                     </div>
                 </div>
-                {/* next prev */}
-                <div className="arrows">
-                    {/* Attach click handlers directly */}
-                    {/* Note: The 'id' attributes are less necessary in React when using refs/handlers */}
-                    <button id="prev" onClick={handlePrevClick}>  l  </button>
-                    <button id="next" onClick={handleNextClick} ref={nextBtnRef}> r </button>
-                </div>
+<div
+  className="arrows"
+  style={{
+    transform: 'translateY(100%)',
+  }}
+>
+  <button
+    id="prev"
+    onClick={handlePrevClick}
+    style={{
+      background: 'rgba(0, 0, 0, 0.8)',
+      border: 'none',
+      color: 'white',
+      borderRadius: '50%',
+    }}
+  >
+    &lt;
+  </button>
+  <button
+    id="next"
+    onClick={handleNextClick}
+    ref={nextBtnRef}
+    style={{
+      background: 'rgba(0, 0, 0, 0.8)',
+      border: 'none',
+      color: 'white',
+      borderRadius: '50%',
+    }}
+  >
+    &gt;
+  </button>
+</div>
+
+
                 {/* time running */}
                 <div className="time"></div>
             </div>

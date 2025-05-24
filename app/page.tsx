@@ -42,7 +42,7 @@ async function getProjectsData(): Promise<ProjectItem[]> {
     },
     {
       image: "/Images/f.jpeg.jpg",
-      title: "Mr. Kaushik Halder",
+      title: "Dr. Kaushik Halder",
       description: "Faculty Advisor Anusandhan 3.O(Assistant Professor,IIT Mandi)",
       link: "/",
     },

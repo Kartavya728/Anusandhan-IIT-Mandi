@@ -3,7 +3,7 @@ import React, { useRef, ReactNode } from "react";
 import { BsCalendarEvent } from "react-icons/bs";
 import { motion, useScroll, useTransform, Variants as FramerVariants, MotionValue } from "framer-motion";
 
-// Interface for event date items (YOUR ORIGINAL)
+// Interface for event date items
 interface EventDateItem {
   id: number;
   event: string;
@@ -11,16 +11,15 @@ interface EventDateItem {
   previousDate: string | null;
 }
 
-// Event dates data with type (YOUR ORIGINAL)
+// Event dates data
 const eventDates: EventDateItem[] = [
-  { id: 1, event: "Last date of Abstract/Full-Length Paper Submission", date: "5th June, 2025", previousDate: null },
+  { id: 1, event: "Last date of Abstract Submission", date: "5th June, 2025", previousDate: null },
   { id: 2, event: "Notification of acceptance", date: "10th June, 2025", previousDate: null },
   { id: 3, event: "Last date of full-length camera-ready publication", date: "20th June, 2025", previousDate: null },
   { id: 4, event: "Date of event", date: "18th-19th June, 2025", previousDate: null },
 ];
 
-
-// Gradient Text Component (reusable - YOUR ORIGINAL)
+// Gradient Text Component
 interface GradientTextProps {
   children: ReactNode;
   className?: string;
@@ -31,7 +30,7 @@ const GradientText: React.FC<GradientTextProps> = ({ children, className }) => (
   </span>
 );
 
-// Animation Variants - Explicitly typed (YOUR ORIGINAL)
+// Animation Variants
 const contentBoxVariants: FramerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
@@ -64,7 +63,6 @@ const EventDatesTable = (): JSX.Element => {
 
   return (
     <div
-      // MODIFIED: min-h-screen, responsive padding for the whole section
       className="min-h-screen z-10 w-full font-sans px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 flex items-center justify-center overflow-x-hidden"
       style={{ backgroundColor: '#e9e5ff' }}
     >
@@ -77,16 +75,13 @@ const EventDatesTable = (): JSX.Element => {
         }}
       >
         <motion.div
-          // MODIFIED: Responsive padding for inner content
           className="p-6 sm:p-8 md:p-10 lg:p-12"
           variants={contentBoxVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.1 }}
         >
-          {/* MODIFIED: Responsive bottom margin for title section */}
           <motion.div className="text-center mb-8 sm:mb-10 md:mb-12" variants={titleVariants}>
-            {/* MODIFIED: Responsive text size and bottom margin for h2 */}
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3">
               <GradientText>Important Event Dates</GradientText>
             </h2>
@@ -99,9 +94,7 @@ const EventDatesTable = (): JSX.Element => {
             <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-cyan-600 opacity-40 rounded-bl-lg"></div>
             <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-cyan-600 opacity-40 rounded-br-lg"></div>
 
-            {/* MODIFIED: Responsive margin for the table container */}
             <div className="bg-slate-800 shadow-xl rounded-lg overflow-hidden border border-slate-700 m-2 sm:m-3 md:m-4">
-              {/* MODIFIED: Responsive padding, icon size, and title text size */}
               <div className="flex items-center justify-center bg-gradient-to-r from-purple-600 to-cyan-600 py-3 px-4 sm:py-4 sm:px-6">
                 <BsCalendarEvent className="text-white mr-2 sm:mr-3 text-xl sm:text-2xl" />
                 <h3 className="text-base sm:text-lg font-semibold text-white">Important Dates</h3>
@@ -111,7 +104,6 @@ const EventDatesTable = (): JSX.Element => {
                 <table className="min-w-full divide-y divide-slate-700">
                   <thead className="bg-slate-700/50">
                     <tr>
-                      {/* MODIFIED: Responsive padding for table header cells */}
                       <th scope="col" className="px-4 py-3 sm:px-6 text-left text-xs font-medium text-slate-300 uppercase tracking-wider">
                         Event
                       </th>
@@ -126,7 +118,6 @@ const EventDatesTable = (): JSX.Element => {
                         key={item.id}
                         className={index % 2 === 0 ? "bg-slate-800 hover:bg-slate-700/70" : "bg-slate-800/60 hover:bg-slate-700/70"}
                       >
-                        {/* MODIFIED: Responsive padding for table data cells */}
                         <td className="px-4 py-4 sm:px-6 whitespace-nowrap text-sm font-medium text-slate-100">
                           {item.event}
                         </td>
@@ -148,27 +139,26 @@ const EventDatesTable = (): JSX.Element => {
             </div>
           </motion.div>
 
-          {/* MODIFIED: Responsive top margin for CTA section */}
           <motion.div className="mt-8 sm:mt-10 md:mt-12 text-center" variants={ctaVariants}>
-            {/* MODIFIED: Responsive text size and bottom margin for paragraph */}
             <p className="text-sm sm:text-base text-slate-400 mb-4 sm:mb-6">
               Please ensure to adhere to these important dates for a smooth participation process.
             </p>
-            {/* MODIFIED: Responsive padding and text size for button */}
-<a
-  href="https://docs.google.com/document/d/1E5Y_Ug-ZfCeXrS2IHQi7vn5-kJX9n9ok/edit"
-  className="inline-flex items-center px-10 py-2.5 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-cyan-500 shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-105"
->
-  Final Schedule
-</a>
-<a
-  href="https://forms.gle/EadMwK1BFwd6a2gq6"
-  className="inline-flex items-center ml-8 px-5 py-2.5 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-cyan-500 shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-105"
->
-  Register Now
-</a>
-
-
+            {/* MODIFIED: Wrapper div for buttons with flex properties */}
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6">
+              <a
+                href="https://docs.google.com/document/d/1E5Y_Ug-ZfCeXrS2IHQi7vn5-kJX9n9ok/edit"
+                className="inline-flex items-center px-10 py-2.5 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-cyan-500 shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-105"
+              >
+                Final Schedule
+              </a>
+              <a
+                href="https://forms.gle/EadMwK1BFwd6a2gq6"
+                // MODIFIED: Removed ml-8 as gap is now used in the parent div
+                className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-cyan-500 shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-105"
+              >
+                Submit Your Abstract
+              </a>
+            </div>
           </motion.div>
         </motion.div>
       </motion.div>
