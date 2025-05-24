@@ -80,7 +80,7 @@ const keyContactsData: KeyContact[] = [
       "SCRI Club Co-ordinator",
       "IIT Mandi, Mandi - 175005",
     ],
-    email: "d24059@students.iitmandi.ac.in",
+    email: "scri@students.iitmandi.ac.in",
   },
   {
     role: "Sponsorship Head",
