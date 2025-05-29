@@ -27,25 +27,25 @@ const content: ContentItem[] = [
     title: "Paper Presentation",
     description:
       "Showcase your research findings and innovative ideas through formal presentations. Engage with peers and experts in your field.",
-    src: "/Images/ss.jpg",
+    src: "/Images/paper.jpg",
   },
   {
     title: "Poster Presentation",
     description:
       "Visually communicate your work and interact directly with attendees during dedicated poster sessions. Perfect for detailed discussions.",
-    src: "/Images/e2.jpeg",
+    src: "/Images/poster.jpg",
   },
   {
     title: "Panel Discussion",
     description:
       "Participate in or listen to insightful discussions led by industry leaders and academics on current trends and future directions.",
-    src: "/Images/e3.jpeg",
+    src: "/Images/panel.jpg",
   },
   {
     title: "Networking & Collaboration",
     description:
       "Connect with fellow researchers, potential collaborators, and industry professionals during structured and informal networking events.",
-    src: "/Images/e4.jpeg",
+    src: "/Images/network.jpg",
   },
 ];
 
