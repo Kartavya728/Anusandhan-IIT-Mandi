@@ -1,13 +1,44 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // Import the CSS file directly. Ensure style.css is in the same directory.
 import './style.css';
 
 import "@/public/Images/c8.jpg";
 import Image from 'next/image';
 
+// --- NEW: Custom Hook to detect screen size ---
+// This hook returns `true` if the media query matches, `false` otherwise.
+const useMediaQuery = (query: string): boolean => {
+    const [matches, setMatches] = useState(false);
+
+    useEffect(() => {
+        // Ensure this code only runs on the client, where `window` is available
+        const media = window.matchMedia(query);
+        
+        // Update state if the media query match status changes
+        const listener = () => {
+            setMatches(media.matches);
+        };
+        
+        // Set the initial state
+        listener();
+
+        // Add event listener for changes
+        media.addEventListener('change', listener);
+
+        // Cleanup: remove the event listener when the component unmounts
+        return () => media.removeEventListener('change', listener);
+    }, [query]); // Re-run effect if the query string changes
+
+    return matches;
+};
+
+
 const Carousel: React.FC = () => {
+    // --- NEW: Use the hook to check for mobile viewport ---
+    const isMobile = useMediaQuery('(max-width: 768px)');
+
     // Create refs to access DOM elements like in vanilla JS
     const carouselRef = useRef<HTMLDivElement>(null);
     const sliderRef = useRef<HTMLDivElement>(null);
@@ -81,19 +112,14 @@ const Carousel: React.FC = () => {
 
     // useEffect runs after the component mounts, similar to DOMContentLoaded
     useEffect(() => {
-        const thumbnailBorderElement = thumbnailBorderRef.current;
         const nextButtonElement = nextBtnRef.current; // Use the ref
+        if (!nextButtonElement) return;
 
-        if (!thumbnailBorderElement || !nextButtonElement) return;
-
-        // Initial setup: Append the first thumbnail item to the end
-        const thumbnailItems = thumbnailBorderElement.querySelectorAll<HTMLDivElement>('.thumbnail .item');
-        if (thumbnailItems.length > 0) {
-             // Check if it hasn't already been moved (e.g., during development hot reload)
-             if (thumbnailBorderElement.firstChild === thumbnailItems[0]) {
-                thumbnailBorderElement.appendChild(thumbnailItems[0]);
-            }
-        }
+        // --- FIXED ---
+        // The original code had a block here that moved only the first thumbnail.
+        // This logic was flawed because it caused the main slider and the thumbnail list
+        // to become desynchronized. It has been removed. Now, both lists start in a
+        // perfectly synchronized state, and every animation keeps them that way.
 
         // Start the initial auto next timeout
         if (runNextAutoRef.current) clearTimeout(runNextAutoRef.current); // Clear just in case
@@ -119,18 +145,23 @@ const Carousel: React.FC = () => {
             <div className="carousel" ref={carouselRef} id="top">
                 {/* list item */}
                 <div className="list" ref={sliderRef}>
-                    {/* NOTE: Ensure image paths start with '/' and point to files in the 'public' directory */}
+                    {/* Item 1 */}
                     <div className="item">
-                        <Image src="/Images/image7.png" alt="slider1" width={600} height={600} />
+                        {isMobile ? (
+                            <Image src="/Images/mob77.jpg" alt="slidermob1" width={600} height={600} priority />
+                        ) : (
+                            <Image src="/Images/image7.png" alt="slider1" width={600} height={600} priority />
+                        )}
                         <div className="content">
-
+                            {/* Content for this slide can go here if needed */}
                         </div>
                     </div>
+                    {/* Item 2 */}
                     <div className="item">
-                    <Image src="/Images/c2.jpg" alt="slider1" width={600} height={600} />
+                        <Image src="/Images/c2.jpg" alt="Paper Presentation" width={600} height={600} />
                         <div className="content">
                             <div className="author">IIT Mandi</div>
-                            <div className="title">Paper Presentaion</div>
+                            <div className="title">Paper Presentation</div>
                             <div className="topic">by ANUSANDHAN</div>
                             <div className="des">
                                 Showcase your research findings and innovative ideas through paper presentations.
@@ -141,8 +172,9 @@ const Carousel: React.FC = () => {
                             </div>
                         </div>
                     </div>
+                    {/* Item 3 */}
                     <div className="item">
-                    <Image src="/Images/image4.jpeg.jpg" alt="slider1" width={600} height={600} />
+                        <Image src="/Images/image4.jpeg.jpg" alt="Poster Presentation" width={600} height={600} />
                         <div className="content">
                             <div className="author">IIT Mandi</div>
                             <div className="title">Poster Presentation</div>
@@ -156,11 +188,12 @@ const Carousel: React.FC = () => {
                             </div>
                         </div>
                     </div>
+                    {/* Item 4 */}
                     <div className="item">
-                    <Image src="/Images/c4.jpg" alt="slider1" width={600} height={600} />
+                        <Image src="/Images/c4.jpg" alt="Panel Discussion" width={600} height={600} />
                         <div className="content">
                             <div className="author">IIT Mandi</div>
-                            <div className="title">Panel Disscusion</div>
+                            <div className="title">Panel Discussion</div>
                             <div className="topic"> by ANUSANDHAN</div>
                             <div className="des">
                                 Engage in insightful discussions with industry experts and scholars on various topics
@@ -171,74 +204,65 @@ const Carousel: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    
                 </div>
-                {/* list thumbnail */}
+                
+                {/* --- FIXED: list thumbnail --- */}
+                {/* The number and order of thumbnails now perfectly match the main slides. */}
                 <div className="thumbnail" ref={thumbnailBorderRef}>
+                    {/* Thumbnail 1 (matches main slide 2) */}
                     <div className="item">
-                    <Image src="/Images/c4.jpg" alt="slider1" width={600} height={600} />
-                        <div className="content">
-
-                        </div>
+                        <Image src="/Images/c2.jpg" alt="thumbnail1" width={150} height={220} />
+                        <div className="content"></div>
                     </div>
+                    {/* Thumbnail 2 (matches main slide 2) */}
                     <div className="item">
-                    <Image src="/Images/image5.jpg" alt="slider1" width={600} height={600} />
-                        <div className="content">
-
-                        </div>
+                        <Image src="/Images/image4.jpeg.jpg" alt="thumbnail2" width={150} height={220} />
+                        <div className="content"></div>
                     </div>
+                    {/* Thumbnail 3 (matches main slide 3) */}
                     <div className="item">
-                    <Image src="/Images/c2.jpg" alt="slider1" width={600} height={600} />
-                        <div className="content">
-
-                        </div>
+                        <Image src="/Images/c4.jpg" alt="thumbnail3" width={150} height={220} />
+                        <div className="content"></div>
                     </div>
+                    {/* Thumbnail 4 (matches main slide 4) */}
                     <div className="item">
-                    <Image src="/Images/image4.jpeg.jpg" alt="slider1" width={600} height={600} />
-                        <div className="content">
-
-                        </div>
-                    </div>
-                                        <div className="item">
-                    <Image src="/Images/c2.jpg" alt="slider1" width={600} height={600} />
-                        <div className="content">
-
-                        </div>
+                        <Image src="/Images/image7.png" alt="thumbnail4" width={150} height={220} />
+                        <div className="content"></div>
                     </div>
                 </div>
-<div
-  className="arrows"
-  style={{
-    transform: 'translateY(100%)',
-  }}
->
-  <button
-    id="prev"
-    onClick={handlePrevClick}
-    style={{
-      background: 'rgba(0, 0, 0, 0.8)',
-      border: 'none',
-      color: 'white',
-      borderRadius: '50%',
-    }}
-  >
-    &lt;
-  </button>
-  <button
-    id="next"
-    onClick={handleNextClick}
-    ref={nextBtnRef}
-    style={{
-      background: 'rgba(0, 0, 0, 0.8)',
-      border: 'none',
-      color: 'white',
-      borderRadius: '50%',
-    }}
-  >
-    &gt;
-  </button>
-</div>
 
+                <div
+                    className="arrows"
+                    style={{
+                        transform: 'translateY(100%)',
+                    }}
+                >
+                    <button
+                        id="prev"
+                        onClick={handlePrevClick}
+                        style={{
+                            background: 'rgba(0, 0, 0, 0.8)',
+                            border: 'none',
+                            color: 'white',
+                            borderRadius: '50%',
+                        }}
+                    >
+                        &lt;
+                    </button>
+                    <button
+                        id="next"
+                        onClick={handleNextClick}
+                        ref={nextBtnRef}
+                        style={{
+                            background: 'rgba(0, 0, 0, 0.8)',
+                            border: 'none',
+                            color: 'white',
+                            borderRadius: '50%',
+                        }}
+                    >
+                        &gt;
+                    </button>
+                </div>
 
                 {/* time running */}
                 <div className="time"></div>

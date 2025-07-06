@@ -11,48 +11,81 @@ interface EventDateItem {
   previousDate: string | null;
 }
 
-// Event dates data
-const eventDates: EventDateItem[] = [
-  { id: 1, event: "Last date of Abstract Submission", date: "5th June, 2025", previousDate: null },
-  { id: 2, event: "Notification of acceptance", date: "10th June, 2025", previousDate: null },
-  { id: 3, event: "Last date of full-length camera-ready publication", date: "20th June, 2025", previousDate: null },
-  { id: 4, event: "Date of event", date: "18th-19th June, 2025", previousDate: null },
-];
-
-// Gradient Text Component
-interface GradientTextProps {
-  children: ReactNode;
-  className?: string;
-}
-const GradientText: React.FC<GradientTextProps> = ({ children, className }) => (
+// ... (GradientText and Animation Variants components remain the same) ...
+const GradientText: React.FC<any> = ({ children, className }) => (
   <span className={`text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500 ${className || ''}`}>
     {children}
   </span>
 );
 
-// Animation Variants
 const contentBoxVariants: FramerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
+    // ...
 };
 
-const titleVariants: FramerVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
-
+// Add tableVariants definition to fix the error
 const tableVariants: FramerVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
 };
 
 const ctaVariants: FramerVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.9 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "backOut" } },
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
 };
 
 const EventDatesTable = (): JSX.Element => {
   const boxRef = useRef<HTMLDivElement | null>(null);
+
+  // --- FINAL DYNAMIC LOGIC ---
+
+  // 1. Source of Truth: This is your base data.
+  const initialEventDates: EventDateItem[] = [
+    { id: 1, event: "Last date of Abstract Submission", date: "1st July, 2025", previousDate: null },
+    { id: 2, event: "Notification of acceptance", date: "8th May, 2025", previousDate: "5th July, 2025" },
+    { id: 3, event: "Last date of full-length camera-ready publication", date: "11th July, 2025", previousDate: null },
+    { id: 4, event: "Date of event", date: "13th-14th July, 2025", previousDate: null },
+  ];
+
+  // 2. The REAL Trigger Date: The date change will happen after this moment.
+  // I've set this to a more logical time (right after the original deadline), but you can change it.
+const triggerDateTime = new Date('2025-07-01T23:55:00'); // 11:55 PM on July 1st
+
+  // 3. TESTING HELPER:
+  //    - TO SEE THE "AFTER" STATE (showing 3rd July): UNCOMMENT the line below.
+  //    - TO SEE THE "BEFORE" STATE (showing 1st July): COMMENT OUT the line below.
+  //
+  // const simulatedDateForTesting = new Date('2025-08-01T00:00:00'); // A date far after the trigger
+  const simulatedDateForTesting: Date | undefined = undefined; // Set to a Date for testing, or undefined for production
+
+  // 4. Determine the "effective" date for our logic.
+  //    It uses the simulated date if it exists, otherwise it uses the user's real current date.
+  const effectiveDate = simulatedDateForTesting !== undefined
+    ? simulatedDateForTesting
+    : new Date();
+
+  // 5. The Core Logic: This maps over the initial data and applies the change if needed.
+  const eventDates = initialEventDates.map(item => {
+    // Check if the item is the one to change AND if the effective date is past the trigger.
+    if (item.id === 1 && effectiveDate > triggerDateTime) {
+      return {
+        ...item,
+        date: "7th July, 2025",
+        previousDate: "3rd July, 2025"
+      };
+    }
+    // Otherwise, return the original item.
+    return item;
+  });
+  // --- END OF LOGIC ---
+
 
   const { scrollYProgress }: { scrollYProgress: MotionValue<number> } = useScroll({
     target: boxRef,
@@ -81,7 +114,8 @@ const EventDatesTable = (): JSX.Element => {
           whileInView="visible"
           viewport={{ once: false, amount: 0.1 }}
         >
-          <motion.div className="text-center mb-8 sm:mb-10 md:mb-12" variants={titleVariants}>
+          {/* ... The rest of your JSX remains exactly the same ... */}
+          <motion.div className="text-center mb-8 sm:mb-10 md:mb-12" variants={tableVariants}>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3">
               <GradientText>Important Event Dates</GradientText>
             </h2>
@@ -138,12 +172,12 @@ const EventDatesTable = (): JSX.Element => {
               </div>
             </div>
           </motion.div>
-
+          
+          {/* ... CTA buttons ... */}
           <motion.div className="mt-8 sm:mt-10 md:mt-12 text-center" variants={ctaVariants}>
             <p className="text-sm sm:text-base text-slate-400 mb-4 sm:mb-6">
               Please ensure to adhere to these important dates for a smooth participation process.
             </p>
-            {/* MODIFIED: Wrapper div for buttons with flex properties */}
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6">
               <a
                 href="https://docs.google.com/document/d/1E5Y_Ug-ZfCeXrS2IHQi7vn5-kJX9n9ok/edit"
@@ -153,7 +187,6 @@ const EventDatesTable = (): JSX.Element => {
               </a>
               <a
                 href="https://forms.gle/EadMwK1BFwd6a2gq6"
-                // MODIFIED: Removed ml-8 as gap is now used in the parent div
                 className="inline-flex items-center px-5 py-2.5 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-cyan-500 shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-105"
               >
                 Submit Your Abstract

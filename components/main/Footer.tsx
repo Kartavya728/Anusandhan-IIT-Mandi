@@ -45,7 +45,7 @@ const footerData: FooterColumn[] = [
   {
     title: "Quick Contact",
     links: [
-      { icon: FaPhoneAlt, text: "+91 9123386175", href: "tel:+919123386175" },
+      { icon: FaPhoneAlt, text: "+91 9002948963", href: "tel:+919002948963" },
       { icon: FaEnvelope, text: "scri@students.iitmandi.ac.in", href: "mailto:scri@students.iitmandi.ac.in" },
       { icon: FaMapMarkerAlt, text: "IIT Mandi, Kamand, Himachal Pradesh", href: "#map-section" },
     ],
@@ -74,26 +74,26 @@ const keyContactsData: KeyContact[] = [
   {
     role: "Organising Secretary",
     icon: FaUserTie,
-    name: "Jeet Bandhu Lahiri",
+    name: "Santu Shit",
     titles: [
-      "Organising Secretary Anusandhan 3.0",
-      "SCRI Club Co-ordinator",
-      "IIT Mandi, Mandi - 175005",
+      "Organising Secretary",
+      "IIT Mandi, Mandi - 175005"
     ],
-    email: "scri@students.iitmandi.ac.in",
+    email: "research_secretary@students.iitmandi.ac.in",
   },
   {
-    role: "Sponsorship Head",
+    role: "Event Mentor",
     icon: FaBullhorn,
-    name: "Jasmeet Singh",
+    name: "Subham Kumar Shaw",
     titles: [
-      "Sponsorship Head, Anusandhan 3.0",
-      "SCRI Club Co-ordinator",
-      "IIT Mandi, Mandi - 175005",
+      "Event Mentor",
+      "SCRI club member",
+      "IIT Mandi, Mandi - 175005"
     ],
-    email: "d24059@students.iitmandi.ac.in",
+    email: "s23015@students.iitmandi.ac.in",
   },
 ];
+
 
 const Footer = () => (
   <div className="w-full z-10 bg-slate-900 text-slate-300 shadow-lg p-6 md:p-10 relative">

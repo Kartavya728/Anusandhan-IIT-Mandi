@@ -6,10 +6,15 @@ import Footer from "@/components/main/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Anusandhan",
-  description: "",
+// app/layout.tsx
+export const metadata = {
+  title: "Anusandhan 3.0 | IIT Mandi",
+  description: "Anusandhan 3.0 is a premier research symposium organized by the Research Society of IIT Mandi, showcasing cutting-edge research and innovation.",
+  icons: {
+    icon: "/scrilogo.png",
+  },
 };
+
 
 export default function RootLayout({
   children,

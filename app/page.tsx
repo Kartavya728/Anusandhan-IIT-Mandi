@@ -58,6 +58,13 @@ async function getProjectsData(): Promise<ProjectItem[]> {
       description: "Student Genral Chair(SCRI Coordinator,IIT Mandi)",
       link: "/",
     },
+    {
+      image: "/Images/spon.jpg", // Update the filename as per your actual image
+      title: "Mr. Deokrisnna Kumar Choudhary",
+      description: "Core Team Member & Sponsorship Head (Anusandhan 3.0, IIT Mandi)",
+      link: "/",
+    }
+
   ];
   return projects;
 }
